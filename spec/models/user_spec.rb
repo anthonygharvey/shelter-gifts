@@ -59,4 +59,8 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe User do
+    it { should have_one(:shelter) }
+  end
+
 end
