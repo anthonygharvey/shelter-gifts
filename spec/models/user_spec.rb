@@ -20,13 +20,15 @@ RSpec.describe User, type: :model do
       expect(user.errors.full_messages).to include("Username has already been taken")
     end
 
-    it "is invalid without a first_name"
+    it "requires a first_name" do
+      expect(build(:user, first_name: nil)).not_to be_valid
+    end
     
-    it "requires a first_name"
-    
-    it "is invalid without a last_name"
-    
-    it "requres a last_name"
+    it "requres a last_name" do
+      user = expect(build(:user, last_name: nil))
+      binding.pry
+      expect(build(:user, last_name: nil)).not_to be_valid
+    end
     
     it "is invalid without an email"
 
