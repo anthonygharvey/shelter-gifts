@@ -29,14 +29,19 @@ RSpec.describe Shelter, type: :model do
       expect(build(:shelter, user: @user, ein: nil)).not_to be_valid
     end
 
+    it "is valid with a valid EIN" do
+      expect(build(:shelter, user: @user, ein: "123456789")).to be_valid
+      expect(build(:shelter, user: @user, ein: "12-3456789")).to be_valid
+      expect(build(:shelter, user: @user, ein: "12345678")).not_to be_valid
+      expect(build(:shelter, user: @user, ein: "1234567890")).not_to be_valid
+    end
+
     it "is invalid without a shelter type" do
       expect(build(:shelter, user: @user, shelter_type: nil)).not_to be_valid
     end
 
     it "is valid without a description" do
       expect(build(:shelter, user: @user, description: nil)).to be_valid
-      shelter = build(:shelter, user: @user)
-      binding.pry
     end
 
     it "is valid without a website URL" do
