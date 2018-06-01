@@ -42,6 +42,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'pry'
+  gem 'shoulda'
 end
 
 group :development do
@@ -60,6 +61,7 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
   gem 'faker'
+  gem 'shoulda-matchers', '~> 3.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
