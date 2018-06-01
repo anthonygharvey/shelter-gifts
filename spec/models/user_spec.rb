@@ -25,8 +25,6 @@ RSpec.describe User, type: :model do
     end
     
     it "requres a last_name" do
-      user = expect(build(:user, last_name: nil))
-      binding.pry
       expect(build(:user, last_name: nil)).not_to be_valid
     end
     
