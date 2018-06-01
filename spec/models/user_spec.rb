@@ -43,12 +43,20 @@ RSpec.describe User, type: :model do
       expect(build(:user, email: 'bertram.gilfoyle@piedpiper..com')).not_to be_valid
     end
 
-    it "is invalid without a password"
+    it "is invalid without a password" do
+      expect(build(:user, password: nil)).not_to be_valid
+    end
 
-    it "is only valid when the password submitted is at least 6 characters long"
+    it "is only valid when the password submitted is at least 6 characters long" do
+      expect(build(:user, password: '123')).not_to be_valid
+      expect(build(:user, password: '123456')).to be_valid
+    end
 
-    it "encrypts the password when saving"
-
+    it "encrypts the password when saving" do
+      user = create(:user, password: "testing123")
+      expect(user.authenticate("testing123")).to eq(user)
+      expect(user.authenticate("123testing")).not_to eq(user)
+    end
   end
 
 end
