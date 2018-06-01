@@ -28,11 +28,20 @@ RSpec.describe User, type: :model do
       expect(build(:user, last_name: nil)).not_to be_valid
     end
     
-    it "is invalid without an email"
+    it "is invalid without an email" do
+      expect(build(:user, email: nil)).not_to be_valid
+    end
+    
+    it "requires a unique email" do
+      create(:user, email: 'richard.hendricks@piedpiper.com')
+      user = build(:user, email: 'richard.hendricks@piedpiper.com')
+      user.valid?
+      expect(user.errors.full_messages).to include('Email has already been taken')
+    end
 
-    it "requires a unique email"
-
-    it "is invalid without a valid email (ex: user@gmail.com)"
+    it "is invalid without a valid email (ex: user@gmail.com)" do
+      expect(build(:user, email: 'bertram.gilfoyle@piedpiper..com')).not_to be_valid
+    end
 
     it "is invalid without a password"
 
