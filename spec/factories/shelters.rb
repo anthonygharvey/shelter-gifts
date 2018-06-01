@@ -6,7 +6,7 @@ FactoryBot.define do
     state { Faker::Address.state }
     ein { Faker::Company.ein }
     shelter_type { Faker::Company.industry }
-    description { Faker::Caompany.catch_phrase }
+    description { Faker::Company.catch_phrase }
     website_url { Faker::Internet.url }    
   end
 end
