@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_01_165323) do
+ActiveRecord::Schema.define(version: 2018_06_01_212314) do
 
   create_table "shelters", force: :cascade do |t|
     t.integer "user_id"
     t.string "name"
     t.string "city"
     t.string "state"
-    t.integer "ein"
+    t.string "ein"
     t.string "shelter_type"
     t.string "description"
     t.string "website_url"

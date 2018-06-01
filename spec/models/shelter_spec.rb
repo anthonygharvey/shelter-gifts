@@ -35,18 +35,12 @@ RSpec.describe Shelter, type: :model do
 
     it "is valid without a description" do
       expect(build(:shelter, user: @user, description: nil)).to be_valid
+      shelter = build(:shelter, user: @user)
+      binding.pry
     end
 
     it "is valid without a website URL" do
       expect(build(:shelter, user: @user, website_url: nil)).to be_valid
-    end
-  end
-
-  describe "Shelter Associations" do
-    it "is invalid with two users" do
-      user2 = build(:user)
-      shelter = build(:shelter, user: @user)
-      binding.pry
     end
   end
   
