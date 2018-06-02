@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Shelter, type: :model do
 
-  before(:each) do
+  before(:all) do
     @user = build(:user)
   end
 
@@ -55,5 +55,21 @@ RSpec.describe Shelter, type: :model do
     it { should have_many(:items).through(:lists) }
   end
 
+  describe "Shelter Scope Methods" do
+    describe "by_state" do
+      it "returns a collection of states by search item" do
+        shelter1 = build(:shelter, user: @user, state: "North Carolina")
+        shelter1.save
+        user2 = build(:user)
+        shelter2 = build(:shelter, user: user2, state: "North Carolina")
+        shelter2.save
+        user3 = build(:user)
+        shelter3 = build(:shelter, user: user3, state: "Georgia")
+        shelter3.save
+        results = expect(Shelter.by_state("North Carolina")).to contain_exactly(shelter1, shelter2)
+      end
+    end
+
+  end
 end
 
