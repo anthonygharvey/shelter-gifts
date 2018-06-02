@@ -52,6 +52,7 @@ RSpec.describe Shelter, type: :model do
   describe "Shelter Associations" do
     it { should belong_to :user }
     it { should have_many :lists }
+    it { should have_many(:items).through(:lists) }
   end
 
 end
