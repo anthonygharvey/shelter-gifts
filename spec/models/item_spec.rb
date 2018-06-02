@@ -46,9 +46,14 @@ RSpec.describe Item, type: :model do
       expect(build(:item, list: @list, has_amount: nil)).not_to be_valid
     end
 
-    it "is invalid without a URL"
+    it "is invalid without a URL" do
+      expect(build(:item, list: @list, url: nil)).not_to be_valid
+    end
 
-    
+    it "is only valid with a valid Amazon URL" do
+      expect(build(:item, list: @list, url: "https://www.amazon.com/awesome_ruby_on_rails_book")).to be_valid
+      expect(build(:item, list: @list, url: "https://www.nozama.com/awesome_ruby_on_rails_book")).not_to be_valid
+    end
   end
 
 end
