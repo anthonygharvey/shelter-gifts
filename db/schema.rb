@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_01_235454) do
+ActiveRecord::Schema.define(version: 2018_06_02_013755) do
+
+  create_table "items", force: :cascade do |t|
+    t.integer "list_id"
+    t.string "name"
+    t.decimal "price", precision: 10, scale: 2
+    t.string "photo"
+    t.boolean "prime_status"
+    t.string "comment"
+    t.integer "quantity"
+    t.string "priority"
+    t.integer "has_amount"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "lists", force: :cascade do |t|
     t.integer "shelter_id"
