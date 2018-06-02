@@ -6,10 +6,10 @@ FactoryBot.define do
     end
 
     name { Faker::Commerce.product_name }
-    decimal { Faker::Commerce.price(range = 0..100.00, as_string = false) }
-    photo { Faker::Avatar.image("my-own-slug", "jpg") }
-    prime_status { Faker::Avatar.boolean(0.1) }
-    comment { Faker::Food.description }
+    price { Faker::Commerce.price(range = 0..100.00, as_string = false) }
+    photo { Faker::Avatar.image("my-own-slug", "135x135", "jpg") }
+    prime_status { Faker::Boolean.boolean(0.1) }
+    comment { Faker::Food.describe }
     quantity { amount_requested }
     priority {["highest", "high", "medium", "low", "lowest", ""].sample}
     has_amount { [0..amount_requested].sample }
