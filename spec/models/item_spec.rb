@@ -22,9 +22,13 @@ RSpec.describe Item, type: :model do
       expect(build(:item, list: @list, price: nil)).not_to be_valid
     end
 
-    it "is invalid without a photo"
+    it "is invalid without a photo" do
+      expect(build(:item, list: @list, photo: nil)).not_to be_valid
+    end
 
-    it "is invalid without a prime_status"
+    it "is invalid without a prime_status" do
+      expect(build(:item, list: @list, prime_status: nil)).not_to be_valid
+    end
 
     it "is valid without a comment"
 
