@@ -56,7 +56,7 @@ RSpec.describe Item, type: :model do
     end
   end
 
-  describe "Item associations" do
+  describe "Item Associations" do
     it { belong_to :list }
   end
 
