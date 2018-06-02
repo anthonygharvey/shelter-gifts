@@ -34,7 +34,7 @@ RSpec.describe List, type: :model do
     end
   end
 
-  describe List do
+  describe "List Associations" do
     it { should belong_to :shelter }
   end
 

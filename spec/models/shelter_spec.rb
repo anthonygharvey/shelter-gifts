@@ -49,7 +49,7 @@ RSpec.describe Shelter, type: :model do
     end
   end
   
-  describe Shelter do
+  describe "Shelter Associations" do
     it { should belong_to :user }
     it { should have_many :lists }
   end

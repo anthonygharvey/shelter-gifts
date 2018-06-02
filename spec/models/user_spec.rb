@@ -59,7 +59,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe User do
+  describe "User Associations" do
     it { should have_one(:shelter) }
   end
 
