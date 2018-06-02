@@ -50,7 +50,8 @@ RSpec.describe Shelter, type: :model do
   end
   
   describe Shelter do
-    it { should belong_to(:user) }
+    it { should belong_to :user }
+    it { should have_many :lists }
   end
 
 end

@@ -32,8 +32,10 @@ RSpec.describe List, type: :model do
       expect(build(:list, shelter: @shelter, url: "https://www.amazon.com/gp/registry/wishlist/ABC123")).to be_valid
       expect(build(:list, shelter: @shelter, url: "https://www.amazon.com/gp/registry/wishlist/")).to be_valid
     end
+  end
 
-
+  describe List do
+    it { should belong_to :shelter }
   end
 
 
