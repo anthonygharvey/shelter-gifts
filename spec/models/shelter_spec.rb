@@ -3,49 +3,51 @@ require 'rails_helper'
 RSpec.describe Shelter, type: :model do
 
   before(:all) do
-    @user = build(:user)
+    @user1 = build(:user)
+    @user2 = build(:user)
+    @user3 = build(:user)
   end
 
   describe "Shelter Factory" do
     it "has a valid shelter factory with user_id, name, city, state, EIN, shelter_type, description and website_url" do
-      expect(build(:shelter, user: @user)).to be_valid
+      expect(build(:shelter, user: @user1)).to be_valid
     end
   end
 
   describe "Shelter Validations" do
     it "is invalid without a name" do
-      expect(build(:shelter, user: @user, name: nil)).not_to be_valid
+      expect(build(:shelter, user: @user1, name: nil)).not_to be_valid
     end
 
     it "is invalid without a City" do
-      expect(build(:shelter, user: @user, city: nil)).not_to be_valid
+      expect(build(:shelter, user: @user1, city: nil)).not_to be_valid
     end
 
     it "is invalid without a State" do
-      expect(build(:shelter, user: @user, state: nil)).not_to be_valid
+      expect(build(:shelter, user: @user1, state: nil)).not_to be_valid
     end
 
     it "is invalid without an EIN" do
-      expect(build(:shelter, user: @user, ein: nil)).not_to be_valid
+      expect(build(:shelter, user: @user1, ein: nil)).not_to be_valid
     end
 
     it "is valid with a valid EIN" do
-      expect(build(:shelter, user: @user, ein: "123456789")).to be_valid
-      expect(build(:shelter, user: @user, ein: "12-3456789")).to be_valid
-      expect(build(:shelter, user: @user, ein: "12345678")).not_to be_valid
-      expect(build(:shelter, user: @user, ein: "1234567890")).not_to be_valid
+      expect(build(:shelter, user: @user1, ein: "123456789")).to be_valid
+      expect(build(:shelter, user: @user1, ein: "12-3456789")).to be_valid
+      expect(build(:shelter, user: @user1, ein: "12345678")).not_to be_valid
+      expect(build(:shelter, user: @user1, ein: "1234567890")).not_to be_valid
     end
 
     it "is invalid without a shelter type" do
-      expect(build(:shelter, user: @user, shelter_type: nil)).not_to be_valid
+      expect(build(:shelter, user: @user1, shelter_type: nil)).not_to be_valid
     end
 
     it "is valid without a description" do
-      expect(build(:shelter, user: @user, description: nil)).to be_valid
+      expect(build(:shelter, user: @user1, description: nil)).to be_valid
     end
 
     it "is valid without a website URL" do
-      expect(build(:shelter, user: @user, website_url: nil)).to be_valid
+      expect(build(:shelter, user: @user1, website_url: nil)).to be_valid
     end
   end
   
@@ -58,15 +60,11 @@ RSpec.describe Shelter, type: :model do
   describe "Shelter Scope Methods" do
     describe "by_state" do
       it "returns a collection of states by search item" do
-        shelter1 = build(:shelter, user: @user, state: "North Carolina")
-        shelter1.save
-        user2 = build(:user)
-        shelter2 = build(:shelter, user: user2, state: "North Carolina")
-        shelter2.save
-        user3 = build(:user)
-        shelter3 = build(:shelter, user: user3, state: "Georgia")
-        shelter3.save
-        results = expect(Shelter.by_state("North Carolina")).to contain_exactly(shelter1, shelter2)
+        shelter1 = create(:shelter, user: @user1, state: "North Carolina")
+        shelter2 = create(:shelter, user: @user2, state: "North Carolina")
+        shelter3 = create(:shelter, user: @user3, state: "Georgia")
+        expect(Shelter.by_state("North Carolina")).to contain_exactly(shelter1, shelter2)
+        expect(Shelter.by_state("North Carolina")).not_to include(shelter3)
       end
     end
 
