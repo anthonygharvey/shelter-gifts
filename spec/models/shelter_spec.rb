@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Shelter, type: :model do
 
-  before(:all) do
+  before(:each) do
     @user1 = build(:user)
     @user2 = build(:user)
     @user3 = build(:user)
@@ -59,12 +59,34 @@ RSpec.describe Shelter, type: :model do
 
   describe "Shelter Scope Methods" do
     describe "by_state" do
-      it "returns a collection of states by search item" do
+      it "returns a collection of shelters in particular states by search" do
         shelter1 = create(:shelter, user: @user1, state: "North Carolina")
         shelter2 = create(:shelter, user: @user2, state: "North Carolina")
         shelter3 = create(:shelter, user: @user3, state: "Georgia")
         expect(Shelter.by_state("North Carolina")).to contain_exactly(shelter1, shelter2)
         expect(Shelter.by_state("North Carolina")).not_to include(shelter3)
+        expect(Shelter.by_state("Florida")).to eq([])
+      end
+    end
+
+    describe "by_city" do
+      it "returns a collection of shelters only in a particular city by search" do
+        shelter1 = create(:shelter, user: @user1, city: "Charlotte")
+        shelter2 = create(:shelter, user: @user2, city: "Charlotte")
+        shelter3 = create(:shelter, user: @user3, city: "Atlanta")
+        expect(Shelter.by_city("Charlotte")).to contain_exactly(shelter1, shelter2)
+        expect(Shelter.by_city("Charlotte")).not_to include(shelter3)
+        expect(Shelter.by_city("Orlando")).to eq([])
+      end
+    end
+
+    describe "by_type" do
+      it "returns a collection of shelters only of a perticular type by search" do
+        shelter1 = create(:shelter, user: @user1, shelter_type: "Men's Shelter")
+        shelter2 = create(:shelter, user: @user2, shelter_type: "Men's Shelter")
+        shelter3 = create(:shelter, user: @user3, shelter_type: "Women & Children")
+        expect(Shelter.by_type("Men's Shelter")).to contain_exactly(shelter1, shelter2)
+        expect(Shelter.by_type("Women & Children")).not_to include(shelter1, shelter2)
       end
     end
 
