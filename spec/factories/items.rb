@@ -12,7 +12,7 @@ FactoryBot.define do
     comment { Faker::Food.describe }
     quantity { amount_requested }
     priority {["highest", "high", "medium", "low", "lowest", ""].sample}
-    has_amount { [0..amount_requested].sample }
+    has_amount { [*0..amount_requested].sample }
     url { Faker::Internet.url }
   end
 end

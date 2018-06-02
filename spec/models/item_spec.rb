@@ -30,13 +30,21 @@ RSpec.describe Item, type: :model do
       expect(build(:item, list: @list, prime_status: nil)).not_to be_valid
     end
 
-    it "is valid without a comment"
+    it "is valid without a comment" do
+      expect(build(:item, list: @list, comment: nil)).to be_valid
+    end
 
-    it "is invalid without a quantity"
+    it "is invalid without a quantity" do
+      expect(build(:item, list: @list, quantity: nil)).not_to be_valid
+    end
 
-    it "is valid without a priority"
+    it "is valid without a priority" do
+      expect(build(:item, list: @list, priority: nil)).to be_valid
+    end
 
-    it "is invalid without a has_amount"
+    it "is invalid without a has_amount" do
+      expect(build(:item, list: @list, has_amount: nil)).not_to be_valid
+    end
 
     it "is invalid without a URL"
 
