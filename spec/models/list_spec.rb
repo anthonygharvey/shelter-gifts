@@ -42,15 +42,13 @@ RSpec.describe List, type: :model do
 
   describe "List Instance Methods" do
     describe "#items_by_priority" do
-      it "returns a collection of items based on priority" do
-        # item1 = build(:item)
-      end
+      it "returns a collection of items based on priority"
     end
 
     describe "#items_by_prime_status" do
       it "returns a collection of items based on prime_status"
     end
-
+    
     describe "items_by_price_range" do
       it "returns a collection of items with prices that fall within the specified range"
     end

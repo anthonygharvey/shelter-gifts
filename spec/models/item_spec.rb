@@ -60,4 +60,18 @@ RSpec.describe Item, type: :model do
     it { belong_to :list }
   end
 
+  describe "Item Instance Methods" do
+    describe "#to_cents" do
+      it "returns the equivalent item price in cents"
+    end
+    
+    describe "#quantity_remaining" do
+      it "returns the number of items needed to be gifted until the quantity requested is fulfilled"
+    end
+
+    describe "#percent_gifted" do
+      it "returns the percentage of items gifted to the quantity requested"
+    end
+  end
+
 end
