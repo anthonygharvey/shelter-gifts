@@ -81,7 +81,7 @@ RSpec.describe Shelter, type: :model do
     end
 
     describe "by_type" do
-      it "returns a collection of shelters only of a perticular type by search" do
+      it "returns a collection of shelters only of a particular type by search" do
         shelter1 = create(:shelter, user: @user1, shelter_type: "Men's Shelter")
         shelter2 = create(:shelter, user: @user2, shelter_type: "Men's Shelter")
         shelter3 = create(:shelter, user: @user3, shelter_type: "Women & Children")

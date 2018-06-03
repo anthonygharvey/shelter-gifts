@@ -5,6 +5,7 @@ RSpec.describe List, type: :model do
   before(:each) do
     @user = build(:user)
     @shelter = build(:shelter, user: @user)
+    @list = build(:list, shelter: @shelter)
   end
 
   describe "List Factory" do
@@ -39,5 +40,20 @@ RSpec.describe List, type: :model do
     it { should have_many :items }
   end
 
+  describe "List Instance Methods" do
+    describe "#items_by_priority" do
+      it "returns a collection of items based on priority" do
+        # item1 = build(:item)
+      end
+    end
+
+    describe "#items_by_prime_status" do
+      it "returns a collection of items based on prime_status"
+    end
+
+    describe "items_by_price_range" do
+      it "returns a collection of items with prices that fall within the specified range"
+    end
+  end
 
 end
