@@ -5,6 +5,7 @@ RSpec.describe Item, type: :model do
     @user = build(:user)
     @shelter = build(:shelter, user: @user)
     @list = build(:list, shelter: @shelter)
+    @item = build(:item, list: @list)
   end
 
   describe "Item Factory" do
@@ -62,15 +63,21 @@ RSpec.describe Item, type: :model do
 
   describe "Item Instance Methods" do
     describe "#to_cents" do
-      it "returns the equivalent item price in cents"
+      it "returns the equivalent item price in cents" do
+        expect(@item.to_cents).to eq((@item.price * 100).to_i)
+      end
     end
     
     describe "#quantity_remaining" do
-      it "returns the number of items needed to be gifted until the quantity requested is fulfilled"
+      it "returns the number of items needed to be gifted until the quantity requested is fulfilled" do
+        expect(@item.quantity_remaining).to eq(@item.quantity - @item.has_amount)
+      end
     end
 
     describe "#percent_gifted" do
-      it "returns the percentage of items gifted to the quantity requested"
+      it "returns the percentage of items gifted to the quantity requested" do
+        expect(@item.percent_gifted).to eq(@item.has_amount.to_f/@item.quantity.to_f)
+      end
     end
   end
 
