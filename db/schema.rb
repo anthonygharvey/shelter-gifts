@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_02_013755) do
+ActiveRecord::Schema.define(version: 2018_06_05_204710) do
 
   create_table "items", force: :cascade do |t|
     t.integer "list_id"
     t.string "name"
     t.decimal "price", precision: 10, scale: 2
     t.string "photo"
-    t.boolean "prime_status"
+    t.boolean "prime_status", default: false
     t.string "comment"
     t.integer "quantity"
     t.string "priority"

@@ -6,6 +6,14 @@ RSpec.describe List, type: :model do
     @user = build(:user)
     @shelter = build(:shelter, user: @user)
     @list = build(:list, shelter: @shelter)
+    @item1 = create(:item, list: @list, price: 12.58, prime_status: true, priority:"Highest")
+    @item2 = create(:item, list: @list, price: 25.41, prime_status: true, priority:"Highest")
+    @item3 = create(:item, list: @list, price: 13.65, prime_status: true, priority:"High")
+    @item4 = create(:item, list: @list, price: 42.81, prime_status: true, priority:"Medium")
+    @item5 = create(:item, list: @list, price: 32.18, prime_status: true, priority:"Medium")
+    @item6 = create(:item, list: @list, price: 65.12, priority:"Low")
+    @item7 = create(:item, list: @list, price: 18.95, priority:"Low")
+    @item8 = create(:item, list: @list, price: 12.53, priority:"Lowest")
   end
 
   describe "List Factory" do
@@ -42,15 +50,25 @@ RSpec.describe List, type: :model do
 
   describe "List Instance Methods" do
     describe "#items_by_priority" do
-      it "returns a collection of items based on priority"
+      it "returns a collection of items based on priority" do
+        expect(@list.items_by_priority("Highest")).to contain_exactly(@item1, @item2)        
+        expect(@list.items_by_priority("medium")).to contain_exactly(@item4, @item5)        
+      end
     end
 
     describe "#items_by_prime_status" do
-      it "returns a collection of items based on prime_status"
+      it "returns a collection of items based on prime_status" do
+        expect(@list.items_by_prime_status(true)).equal?([@item1, @item2, @item3, @item4])
+        expect(@list.items_by_prime_status(false)).equal?([@item5, @item6, @item7, @item8])
+      end
     end
     
     describe "items_by_price_range" do
-      it "returns a collection of items with prices that fall within the specified range"
+      it "returns a collection of items with prices that fall within the specified range" do
+        expect(@list.items_by_price_range("10.00", "25.00")).to contain_exactly(@item1, @item3, @item7, @item8)
+        expect(@list.items_by_price_range("30.00", "50.00")).to contain_exactly(@item4, @item5)
+        expect(@list.items_by_price_range("100.00", "200.00")).to contain_exactly()
+      end
     end
   end
 
