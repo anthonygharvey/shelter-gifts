@@ -8,4 +8,6 @@ class Shelter < ApplicationRecord
 	scope :by_state, 	-> state { where(state: state) if state.present? }
 	scope :by_city, 	-> city { where(city: city) if city.present? }
 	scope :by_type,		-> shelter_type { where(shelter_type: shelter_type) if shelter_type.present? }
+
+	SHELTER_TYPES = ["Adult homeless", "Youth homeless", "Family homeless", "Religious", "Transitional housing/shelter program", "Government run", "Halfway house", "Wet shelter"]
 end

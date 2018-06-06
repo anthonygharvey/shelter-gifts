@@ -1,0 +1,17 @@
+<%= form_for(@shelter) do |f| %>
+	<%= f.label :name, "Shelter Name:" %>
+	<%= f.text_field :name %><br>
+	<%= f.label :city, "City:" %>
+	<%= f.text_field :city %><br>
+	<%= f.label :state, "State:" %>
+	<%= f.text_field :state %><br>
+	<%= f.label :ein, "Employer Identification Number (EIN):" %>
+	<%= f.text_field :ein %><br>
+	<%= f.label :shelter_type, "Shelter Type:" %>
+	<%= f.select(:shelter_type, options_for_select(Shelter::SHELTER_TYPES)) %><br>
+	<%= f.label :description, "Description:" %>
+	<%= f.text_area :description, size: "60x12" %><br>
+	<%= f.label :website_url, "Website URL:" %>
+	<%= f.text_field :website_url %><br>
+	<%= f.submit %>
+<% end %>
