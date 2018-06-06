@@ -11,7 +11,7 @@ class SheltersController < ApplicationController
 		@user = User.find(params[:user_id])
 		@shelter = @user.build_shelter(shelter_params)
 		if @shelter.save
-			redirect_to user_shelter_path(@user, @shelter)
+			redirect_to shelter_path(@shelter)
 		else
 			render "new"
 		end
