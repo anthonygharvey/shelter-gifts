@@ -55,6 +55,7 @@ RSpec.describe Shelter, type: :model do
     it { should belong_to :user }
     it { should have_many :lists }
     it { should have_many(:items).through(:lists) }
+    it { should validate_uniqueness_of(:ein) }
   end
 
   describe "Shelter Scope Methods" do

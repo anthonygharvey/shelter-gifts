@@ -4,6 +4,7 @@ class Shelter < ApplicationRecord
 	has_many :items, through: :lists
 	validates :name, :city, :state, :ein, :shelter_type, presence: true
 	validates_format_of :ein, with: /\A^[0-9]\d?-\d{7}$\z|\A\d{9}\z/
+	validates_uniqueness_of :ein
 
 	scope :by_state, 	-> state { where(state: state) if state.present? }
 	scope :by_city, 	-> city { where(city: city) if city.present? }
