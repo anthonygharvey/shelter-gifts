@@ -6,4 +6,5 @@
 <p><%= @shelter.description %></p>
 <p>Website: <%= link_to @shelter.name, @shelter.website_url, target: "_blank" %></p><br>
 
+<%= link_to 'View Lists', shelter_lists_path(@shelter) %><br>
 <%= link_to 'Create a new list', new_shelter_list_path(@shelter) %>
