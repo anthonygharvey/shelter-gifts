@@ -1,0 +1,11 @@
+<% @list.items.each do |item| %>
+	<h2><%= item.name %></h2>
+	<p><%= item.price %></p>
+	<img src="<%= item.photo %>" alt="a picture of <%= item.name %>">
+	<p>Amazon Prime item: <%= item.prime_status %></p>
+	<p><%= item.comment %></p>
+	<p><%= item.priority %></p>
+	<p>Currently has: <%= item.has_amount %></p>
+	<p>Product Link: <%= link_to item.name, item.url %></p>
+
+<% end %>
