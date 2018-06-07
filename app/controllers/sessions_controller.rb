@@ -6,7 +6,11 @@ class SessionsController < ApplicationController
 		user = User.find_by(:email => params[:email])
 		if user && user.authenticate(params[:password])
 			session[:user_id] = user.id
-			redirect_to new_user_shelter_path(user)
+			if user.shelter == nil
+				redirect_to new_user_shelter_path(user)
+			else
+				redirect_to shelter_path(user.shelter)
+			end
 		else
 			render "sessions/new"
 		end
