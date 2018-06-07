@@ -1,0 +1,10 @@
+<h1>Create a New Wishlist!</h1>
+<%= form_for([@shelter, @list]) do |f| %>
+	<%= f.label :name, "List Name:" %>
+	<%= f.text_field :name %><br>
+	<%= f.label :description, "Description: " %>
+	<%= f.text_field :description %><br>
+	<%= f.label :url, "Amazon Wishlist URL: " %>
+	<%= f.text_field :url %><br>
+	<%= f.submit %>
+<% end %>
