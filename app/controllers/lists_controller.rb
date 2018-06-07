@@ -1,5 +1,8 @@
 class ListsController < ApplicationController
 	def index
+		@shelter = Shelter.find(params[:shelter_id])
+		@lists = @shelter.lists
+		
 	end
 
 	def new
