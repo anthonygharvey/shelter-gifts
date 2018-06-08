@@ -52,8 +52,8 @@ RSpec.describe Item, type: :model do
     end
 
     it "is only valid with a valid Amazon URL" do
-      expect(build(:item, list: @list, url: "https://www.amazon.com/awesome_ruby_on_rails_book")).to be_valid
-      expect(build(:item, list: @list, url: "https://www.nozama.com/awesome_ruby_on_rails_book")).not_to be_valid
+      expect(build(:item, list: @list, url: "https://amazon.com/awesome_ruby_on_rails_book")).to be_valid
+      expect(build(:item, list: @list, url: "https://nozama.com/awesome_ruby_on_rails_book")).not_to be_valid
     end
   end
 
