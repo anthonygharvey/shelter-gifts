@@ -18,13 +18,28 @@ class List < ApplicationRecord
 
 	def items_by_price_range(lower, upper)
 		self.items.select do |item|
+			# binding.pry
 			(lower.to_f * 100) <= item.to_cents && item.to_cents <= (upper.to_f * 100)
 		end
 	end
 
-	def get_items
-		page = Nokogiri::HTML(open(self.url)).css("li[data-id]")
-		page.each do |item|
+	def get_items(list_url)
+		user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_0) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.854.0 Safari/535.2"
+		page = Nokogiri::HTML(open(list_url, 'User-Agent' => "Ruby/#{RUBY_VERSION}"))
+
+		if page.css("div#endOfListMarker") != []
+			end_of_list_marker = page.css("div#endOfListMarker")
+		end
+
+		if !page.css("a.wl-see-more").empty?
+			more = "https://amazon.com"+ page.css("a.wl-see-more").attribute("href").value
+		else
+			more = false
+			last_part = "https://amazon.com" + page.css("form.scroll-state input").attribute("value").value
+		end
+
+		items = page.css("li[data-id]")
+		items.each do |item|
 			i = self.items.new
 			
 			i.name = item.css("a[id^=itemName]").text
@@ -42,14 +57,15 @@ class List < ApplicationRecord
 			i.url = "https://amazon.com" + item.css("a[id^=itemName]").attribute("href").value
 			i.save
 		end
+
+		if more
+			get_items(more)
+		else
+			if page.css("a.wl-see-more").empty? # last page if true
+				exit
+			end
+			get_items(last_part)
+		end
 	end
-
-	#Refactor Scrapping
-	# the #get_items method works for a wishlist page with all items currently in view.  If a list has enough items that a "see more" link is generated, it will not scrape those items.  Thought about using the Watir-Scroll gem to scroll unitl the div#endofListMaker element is in view; but all of the data I need is present on the first page (1st page items and the see more link).
-	#TODO: 1) add #get_page(url) method.  It 1) scrapes the url provided. 2) checks for the "see more" (link page.css("a.wl-see-more").attribute("href").value), if present, call the #get_page(url) method, else call #get_items(page)
-
-	#TODO: 2) refactor #get_items.  1) Add parameter (page) for the page to iterate through.  2) This method will be called by the #get_page(url) method, which will pass it a Nokogiri page object.
-
-	#
 
 end
