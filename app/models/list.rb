@@ -23,26 +23,33 @@ class List < ApplicationRecord
 	end
 
 	def get_items
-		# page = Nokogiri::HTML(open(self.url)).css("[id^=data-id]")
 		page = Nokogiri::HTML(open(self.url)).css("li[data-id]")
-		# binding.pry
 		page.each do |item|
 			i = self.items.new
 			
-			i.name = item.css("a[id^=itemName]").text # Item name
-			i.url = "https://amazon.com" + item.css("a[id^=itemName]").attribute("href").value # item url
-			i.price =item.css("span[id^=itemPrice] span.a-offscreen").text.gsub("$","") # price
-			#TODO: If price == nil && "See all buying options" avalilable, then click and scrape the page for: Price + Shipping, Condition & Add to cart link
-			i.prime_status =item.css("div[data-item-prime-info] i.a-icon-prime") #prime item. Will return the object if prime; empty array i-f not
-			i.comment =item.css("span[id^=itemComment]").text #item comment
-			i.priority =item.css("span[id^=itemPriorityLabel]").text # item priority
-			i.quantity =item.css("span[id^=itemRequested_]").text # item quantity requested
-			i.has_amount =item.css("span[id^=itemPurchased_]").text # item quantity purchased
-			i.photo =item.css("img").attribute("src").value # image
-			# item"https://amazon.com" + .css("span.a-button-inner a").attribute("href").value
-			# binding.pry
+			i.name = item.css("a[id^=itemName]").text
+			if item.attribute("data-price").value == "-Infinity"
+				i.price = nil
+			else
+				i.price = item.attribute("data-price").value
+			end
+			i.photo =item.css("img").attribute("src").value
+			i.prime_status =item.css("div[data-item-prime-info] i.a-icon-prime")
+			i.comment =item.css("span[id^=itemComment]").text
+			i.quantity =item.css("span[id^=itemRequested_]").text
+			i.priority =item.css("span[id^=itemPriorityLabel]").text
+			i.has_amount =item.css("span[id^=itemPurchased_]").text
+			i.url = "https://amazon.com" + item.css("a[id^=itemName]").attribute("href").value
 			i.save
 		end
 	end
+
+	#Refactor Scrapping
+	# the #get_items method works for a wishlist page with all items currently in view.  If a list has enough items that a "see more" link is generated, it will not scrape those items.  Thought about using the Watir-Scroll gem to scroll unitl the div#endofListMaker element is in view; but all of the data I need is present on the first page (1st page items and the see more link).
+	#TODO: 1) add #get_page(url) method.  It 1) scrapes the url provided. 2) checks for the "see more" (link page.css("a.wl-see-more").attribute("href").value), if present, call the #get_page(url) method, else call #get_items(page)
+
+	#TODO: 2) refactor #get_items.  1) Add parameter (page) for the page to iterate through.  2) This method will be called by the #get_page(url) method, which will pass it a Nokogiri page object.
+
+	#
 
 end
