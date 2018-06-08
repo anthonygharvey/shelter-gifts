@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_05_204710) do
+ActiveRecord::Schema.define(version: 2018_06_08_192356) do
 
   create_table "items", force: :cascade do |t|
     t.integer "list_id"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 2018_06_05_204710) do
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "button_text"
+    t.string "button_url"
   end
 
   create_table "lists", force: :cascade do |t|

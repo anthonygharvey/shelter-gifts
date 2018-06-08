@@ -54,7 +54,9 @@ class List < ApplicationRecord
 			i.quantity =item.css("span[id^=itemRequested_]").text
 			i.priority =item.css("span[id^=itemPriorityLabel]").text
 			i.has_amount =item.css("span[id^=itemPurchased_]").text
-			i.url = "https://amazon.com" + item.css("a[id^=itemName]").attribute("href").value
+			i.url = "https://amazon.com" + item.css("a.a-link-normal").attribute("href").value
+			i.button_text = item.css("span.a-button-inner").text
+			i.button_url = "https://www.amazon.com" + item.css("span.a-button-inner a").attribute("href").value
 			i.save
 		end
 

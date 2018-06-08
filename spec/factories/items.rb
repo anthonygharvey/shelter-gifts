@@ -14,5 +14,7 @@ FactoryBot.define do
     priority {["highest", "high", "medium", "low", "lowest", ""].sample}
     has_amount { [*0..amount_requested].sample }
     url { "https://amazon.com/" }
+    button_text { "Add to cart" }
+    button_url { "https://www.amazon.com/" }
   end
 end

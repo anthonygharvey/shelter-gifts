@@ -51,6 +51,11 @@ RSpec.describe Item, type: :model do
       expect(build(:item, list: @list, url: nil)).not_to be_valid
     end
 
+    it "is invalid without a valid 'Add to Cart' or 'See all buying options' button" do
+      expect(build(:item, list: @list, button_text: nil, button_url: 'https://www.amazon.com')).not_to be_valid
+      expect(build(:item, list: @list, button_text: 'See all buying options', button_url: nil)).not_to be_valid
+    end
+
     it "is only valid with a valid Amazon URL" do
       expect(build(:item, list: @list, url: "https://amazon.com/awesome_ruby_on_rails_book")).to be_valid
       expect(build(:item, list: @list, url: "https://nozama.com/awesome_ruby_on_rails_book")).not_to be_valid
