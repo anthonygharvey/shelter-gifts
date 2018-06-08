@@ -70,6 +70,14 @@ RSpec.describe List, type: :model do
         expect(@list.items_by_price_range("100.00", "200.00")).to contain_exactly()
       end
     end
+
+    describe "get_items" do
+      it "returns a collection of valid Item objects" do
+        @list.url = "https://www.amazon.com/hz/wishlist/ls/Y5IV9G7N16QU?filter=DEFAULT&lek=d6dc71fd-3690-4470-a634-288964c6ec47&sort=default&type=wishlist"
+        puts "Scrapping the website now...."
+        expect(@list.get_items(@list.url)).all.to be_instance_of(Item)
+      end
+    end
   end
 
 end
