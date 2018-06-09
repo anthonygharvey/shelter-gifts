@@ -1,17 +1,38 @@
-<h1><%= @shelter.name %></h1>
-
-
 <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+	<div class="mdl-card__title">
+    <h2 class="mdl-card__title-text"><%= @shelter.name %></h2>
+  </div>
 
   <div class="mdl-card__supporting-text">
 		City: <%= @shelter.city %><br>
 		State: <%= @shelter.state %><br>
 		Type: <%= @shelter.shelter_type %><br>
+		<br>
 		<p>Description: <%= @shelter.description %></p>
-		Website: <%= link_to @shelter.name, @shelter.website_url, target: "_blank" %></p>
+		Website: <%= link_to @shelter.name, @shelter.website_url, target: "_blank" %>
   </div>
 	<div class="mdl-card__actions mdl-card--border">
 		<%= link_to 'Add a new list', new_shelter_list_path(@shelter), class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" %>
 		<%= link_to 'View Lists', shelter_lists_path(@shelter), class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" %>
   </div>
 </div>
+<h4>Wishlists</h4>
+<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">Name</th>
+      <th>Items</th>
+      <th>Received %</th>
+    </tr>
+  </thead>
+  <tbody>
+		<% @shelter.lists.each do |list| %>
+			<tr>
+				<td class="mdl-data-table__cell--non-numeric"><%= list.name %></td>
+				<td><%= list.items.count %></td>
+				<td>$2.90</td>
+			</tr>
+		<% end %>
+  
+	</tbody>
+</table>
