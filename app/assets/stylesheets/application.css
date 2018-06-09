@@ -19,8 +19,12 @@
   justify-content: center;
 }
 
+.mdl-layout__content {
+	padding: 24px;	
+}
+
  .demo-card-wide.mdl-card {
-  width: 600px;
+  width: 450px;
 }
 .demo-card-wide > .mdl-card__title {
   color: rgba(0,0,0, 0.87);
