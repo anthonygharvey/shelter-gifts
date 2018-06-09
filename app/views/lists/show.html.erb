@@ -1,6 +1,7 @@
 <h1><%= @list.name %></h1>
 <p>Description: <%= @list.description %><br>
-Wishlist link: <%= link_to @list.url, @list.url, target: '_blank' %></p>
+Wishlist link: <%= link_to @list.url, @list.url, target: '_blank' %><br>
+<%= link_to @list.shelter.name + ' page', shelter_path(@list.shelter) %></p>
 
 <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
   <thead>
@@ -25,7 +26,19 @@ Wishlist link: <%= link_to @list.url, @list.url, target: '_blank' %></p>
 	</tbody>
 </table>
 <br>
-<%= link_to @list.shelter.name + ' page', shelter_path(@list.shelter) %>
+
+	<%= link_to 'Delete List', list_path(@list), method: :delete, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect", id: "delete-button"%>
+
+<div class="mdl-tooltip mdl-tooltip--large" for="delete-button">
+	List will be permanently deleted
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+
 <%# use this to display each item for regular users! %>
 <% @list.items.each do |item| %>
 	<div class="demo-card-square mdl-card mdl-shadow--2dp">

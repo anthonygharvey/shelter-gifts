@@ -32,6 +32,9 @@ class ListsController < ApplicationController
 	end
 
 	def destroy
+		@list = List.find(params[:id])
+		@list.delete
+		redirect_to shelter_path(@current_user.shelter)
 	end
 
 	private
