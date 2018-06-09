@@ -1,10 +1,17 @@
-<h1>Create a New Wishlist!</h1>
+<h2>Create A New Wishlist</h2>
+
 <%= form_for([@shelter, @list]) do |f| %>
-	<%= f.label :name, "List Name:" %>
-	<%= f.text_field :name %><br>
-	<%= f.label :description, "Description: " %>
-	<%= f.text_field :description %><br>
-	<%= f.label :url, "Amazon Wishlist URL: " %>
-	<%= f.text_field :url %><br>
-	<%= f.submit %>
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		<%= f.label :name, "List Name", class: "mdl-textfield__label" %>
+		<%= f.text_field :name, class: "mdl-textfield__input" %>
+	</div><br>
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		<%= f.label :description, "List description", class: "mdl-textfield__label" %>
+		<%= f.text_field :description, class: "mdl-textfield__input" %>
+	</div><br>
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		<%= f.label :url, "Amazon Wishlist URL", class: "mdl-textfield__label" %>
+		<%= f.text_field :url, class: "mdl-textfield__input" %>
+	</div><br>
+	<%= f.submit "Create List", class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" %>
 <% end %>
