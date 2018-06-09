@@ -21,27 +21,16 @@
           <!-- Navigation. We hide it in small screens. -->
           <nav class="mdl-navigation mdl-layout--large-screen-only">
             <% if !logged_in? %>
-              <%= link_to 'Shelter Signup', register_path, {class: "mdl-navigation__link"} %>
-            <% end %>
-            <% if logged_in? %>
-              <%= link_to 'Logout', logout_path, {class: "mdl-navigation__link"} %>
-            <% else %>
               <%= link_to 'Login', login_path, {class: "mdl-navigation__link"} %>
+              <%= link_to 'Shelter Signup', register_path, {class: "mdl-navigation__link"} %>
+            <% else%>
+              <%= link_to 'My Shelter', shelter_path(@current_user.shelter), {class: "mdl-navigation__link"} %>
+              <%= link_to 'Wishlists', shelter_lists_path(@current_user.shelter), {class: "mdl-navigation__link"} %>
+              <%= link_to 'Logout', logout_path, {class: "mdl-navigation__link"} %>
             <% end %>
-            <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a>
           </nav>
         </div>
       </header>
-      <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">Title</span>
-        <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-        </nav>
-      </div>
       <main class="mdl-layout__content">
         <div class="page-content">
           <%= yield %>
