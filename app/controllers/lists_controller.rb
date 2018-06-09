@@ -13,6 +13,7 @@ class ListsController < ApplicationController
 	def create
 		@shelter = Shelter.find(params[:shelter_id])
 		@list = @shelter.lists.build(list_params)
+		@list.get_items(@list.url)
 		if @list.save
 			redirect_to list_path(@list)
 		else

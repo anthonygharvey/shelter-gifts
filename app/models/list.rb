@@ -65,7 +65,7 @@ class List < ApplicationRecord
 			get_items(more)
 		else
 			if page.css("a.wl-see-more").empty? # last page if true
-				exit
+				return
 			end
 			get_items(last_part)
 		end
