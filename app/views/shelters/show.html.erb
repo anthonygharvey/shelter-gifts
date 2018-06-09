@@ -1,10 +1,17 @@
 <h1><%= @shelter.name %></h1>
-<p>City: <%= @shelter.city %></p>
-<p>State: <%= @shelter.state %></p>
-<p>Shelter Type: <%= @shelter.shelter_type %></p>
-<p>Description:</p>
-<p><%= @shelter.description %></p>
-<p>Website: <%= link_to @shelter.name, @shelter.website_url, target: "_blank" %></p><br>
 
-<%= link_to 'View Lists', shelter_lists_path(@shelter) %><br>
-<%= link_to 'Create a new list', new_shelter_list_path(@shelter) %>
+
+<div class="demo-card-wide mdl-card mdl-shadow--2dp">
+
+  <div class="mdl-card__supporting-text">
+		City: <%= @shelter.city %><br>
+		State: <%= @shelter.state %><br>
+		Type: <%= @shelter.shelter_type %><br>
+		<p>Description: <%= @shelter.description %></p>
+		Website: <%= link_to @shelter.name, @shelter.website_url, target: "_blank" %></p>
+  </div>
+	<div class="mdl-card__actions mdl-card--border">
+		<%= link_to 'Add a new list', new_shelter_list_path(@shelter), class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" %>
+		<%= link_to 'View Lists', shelter_lists_path(@shelter), class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" %>
+  </div>
+</div>
