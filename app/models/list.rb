@@ -1,6 +1,6 @@
 class List < ApplicationRecord
 	belongs_to :shelter
-	has_many :items, dependent: :destroy
+	has_many :items
 	validates :name, :url, presence: true
 	validates_format_of :url, with: /\A(http|https):\/\/www.amazon.com\/gp\/registry\/wishlist\/|([0-9])[A-Za-z0-9]+\z/
 
@@ -58,6 +58,7 @@ class List < ApplicationRecord
 			i.url = "https://amazon.com" + item.css("a.a-link-normal").attribute("href").value
 			i.button_text = item.css("span.a-button-inner").text
 			i.button_url = "https://www.amazon.com" + item.css("span.a-button-inner a").attribute("href").value
+			binding.pry
 			i.save
 		end
 
