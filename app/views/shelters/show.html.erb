@@ -14,27 +14,34 @@
 
 </div>
 
-<h4>Wishlists</h4>
-<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-  <thead>
-    <tr>
-      <th class="mdl-data-table__cell--non-numeric">Name</th>
-      <th>Items</th>
-      <th>Received %</th>
-    </tr>
-  </thead>
-  <tbody>
-		<% @shelter.lists.each do |list| %>
+<% if @shelter.lists.count == 0%>
+	<h4>No Wishlists Yet</h4>
+	<%= link_to 'Add First List', new_shelter_list_path(@shelter), class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" %>
+<% else%>
+	<h4>Wishlists</h4>
+	<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+		<thead>
 			<tr>
-				<td class="mdl-data-table__cell--non-numeric"><%= link_to list.name, list_path(list) %></td>
-				<td><%= list.items.count %></td>
-				<td>$2.90</td>
+				<th class="mdl-data-table__cell--non-numeric">Name</th>
+				<th>Items</th>
+				<th>Received %</th>
 			</tr>
-		<% end %>
-  
-	</tbody>
-</table>
+		</thead>
+		<tbody>
+			<% @shelter.lists.each do |list| %>
+				<tr>
+					<td class="mdl-data-table__cell--non-numeric"><%= link_to list.name, list_path(list) %></td>
+					<td><%= list.items.count %></td>
+					<td>$2.90</td>
+				</tr>
+			<% end %>
+		
+		</tbody>
+	</table>
 
-<br>
+	<br>
 
-<%= link_to 'Add a new list', new_shelter_list_path(@shelter), class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" %>
+	<%= link_to 'Add a new list', new_shelter_list_path(@shelter), class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" %>
+<% end %>
+
+
