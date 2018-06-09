@@ -34,3 +34,7 @@
 .demo-card-wide > .mdl-card__menu {
   color: #fff;
 }
+
+div.field_with_errors > label {
+	color: red;
+}
