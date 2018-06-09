@@ -11,11 +11,9 @@
 		<p>Description: <%= @shelter.description %></p>
 		Website: <%= link_to @shelter.name, @shelter.website_url, target: "_blank" %>
   </div>
-	<div class="mdl-card__actions mdl-card--border">
-		<%= link_to 'Add a new list', new_shelter_list_path(@shelter), class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" %>
-		<%= link_to 'View Lists', shelter_lists_path(@shelter), class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" %>
-  </div>
+
 </div>
+
 <h4>Wishlists</h4>
 <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
   <thead>
@@ -36,3 +34,7 @@
   
 	</tbody>
 </table>
+
+<br>
+
+<%= link_to 'Add a new list', new_shelter_list_path(@shelter), class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" %>

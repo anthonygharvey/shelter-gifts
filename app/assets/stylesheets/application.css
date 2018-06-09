@@ -48,3 +48,7 @@ div.field_with_errors > label {
 .item-stats {
 	justify-content: space-between;
 }
+
+.item-photo {
+	margin: auto
+}

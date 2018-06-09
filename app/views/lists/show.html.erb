@@ -1,12 +1,36 @@
 <h1><%= @list.name %></h1>
-<p><%= @list.description %></p>
-<p>Wishlist link: <%= link_to @list.url, @list.url, target: '_blank' %></p>
+<p>Description: <%= @list.description %><br>
+Wishlist link: <%= link_to @list.url, @list.url, target: '_blank' %></p>
 
+<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">Item</th>
+      <th>Priority</th>
+      <th>Requested</th>
+      <th>Donated</th>
+      <th>Received</th>
+    </tr>
+  </thead>
+  <tbody>
+		<% @list.items.each do |item| %>
+			<tr>
+				<td class="mdl-data-table__cell--non-numeric"><%= item.name %></td>
+				<td><%= item.priority.capitalize %></td>
+				<td><%= item.quantity %></td>
+				<td><%= item.has_amount %></td>
+				<td><%= (item.percent_gifted * 100).round(0) %>%</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+<br>
+<%= link_to @list.shelter.name + ' page', shelter_path(@list.shelter) %>
 <%# use this to display each item for regular users! %>
 <% @list.items.each do |item| %>
 	<div class="demo-card-square mdl-card mdl-shadow--2dp">
 		<div class="mdl-card__title mdl-card--expand">
-			<h2 class="mdl-card__title-text"><img src="<%= item.photo %>" alt=""></h2>
+			<h2 class="mdl-card__title-text item-photo"><img src="<%= item.photo %>" alt=""></h2>
 		</div>
 		<div class="mdl-card__supporting-text">
 			<%= item.name %>
