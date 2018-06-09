@@ -24,8 +24,8 @@
               <%= link_to 'Login', login_path, {class: "mdl-navigation__link"} %>
               <%= link_to 'Shelter Signup', register_path, {class: "mdl-navigation__link"} %>
             <% else%>
-              <%= link_to 'My Shelter', shelter_path(@current_user.shelter), {class: "mdl-navigation__link"} %>
-              <%= link_to 'Wishlists', shelter_lists_path(@current_user.shelter), {class: "mdl-navigation__link"} %>
+              <%= link_to 'My Shelter', shelter_path(current_user.shelter), {class: "mdl-navigation__link"} %>
+              <%= link_to 'Wishlists', shelter_lists_path(current_user.shelter), {class: "mdl-navigation__link"} %>
               <%= link_to 'Logout', logout_path, {class: "mdl-navigation__link"} %>
             <% end %>
           </nav>
