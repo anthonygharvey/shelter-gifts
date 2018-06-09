@@ -7,11 +7,11 @@ Rails.application.routes.draw do
   resources :users do
     resources :shelters, shallow: true do
       resources :lists, shallow: true do
-        resources :items, only: [:index]
       end
     end
   end
+  resources :items, only: [:index]
 
-  # root 'shelters#show'
+  root 'items#index'
 
 end

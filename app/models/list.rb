@@ -58,7 +58,6 @@ class List < ApplicationRecord
 			i.url = "https://amazon.com" + item.css("a.a-link-normal").attribute("href").value
 			i.button_text = item.css("span.a-button-inner").text
 			i.button_url = "https://www.amazon.com" + item.css("span.a-button-inner a").attribute("href").value
-			binding.pry
 			i.save
 		end
 
