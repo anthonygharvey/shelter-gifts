@@ -1,6 +1,24 @@
-<h1>Login</h1>
-<%= form_tag(sessions_path) do %>
-	<%= text_field_tag :email, "", placeholder: 'Enter your email'  %>
-	<%= text_field_tag :password, '', placeholder: 'Enter a password' %>
-	<%= submit_tag "Login" %>
-<% end %>
+<div class="demo-card-wide mdl-card mdl-shadow--2dp">
+	<div class="mdl-card__title">
+		<h2 class="mdl-card__title-text">Welcome</h2>
+	</div>
+	<div class="mdl-card__supporting-text">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+		Mauris sagittis pellentesque lacus eleifend lacinia...
+	
+		<br>
+		<%= form_tag(sessions_path) do %>
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<%= text_field_tag :email, "", class: "mdl-textfield__input" %>
+				<%= label_tag :email, "Email", class: "mdl-textfield__label" %>
+			</div>
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<%= text_field_tag :password, "", class: "mdl-textfield__input" %>
+				<%= label_tag :password, "Password", class: "mdl-textfield__label" %>
+			</div>
+		</div>
+		<div class="mdl-card__actions">
+			<%= submit_tag "Login", class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
+		</div>
+	<% end %>
+</div>

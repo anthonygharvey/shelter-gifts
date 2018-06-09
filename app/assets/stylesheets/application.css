@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+ .demo-card-wide.mdl-card {
+  width: 600px;
+}
+.demo-card-wide > .mdl-card__title {
+  color: rgba(0,0,0, 0.87);
+  /* height: 176px; */
+  /* background: url('../assets/demos/welcome_card.jpg') center / cover; */
+}
+.demo-card-wide > .mdl-card__menu {
+  color: #fff;
+}
