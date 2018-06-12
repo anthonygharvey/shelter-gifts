@@ -13,10 +13,12 @@ class ListsController < ApplicationController
 	def create
 		@shelter = Shelter.find(params[:shelter_id])
 		@list = @shelter.lists.build(list_params)
+		if @list.valid?
 		@list.get_items(@list.url)
 		@list.items.each{|item| item.valid? ? next : item.delete}
-		if @list.save
-			redirect_to list_path(@list)
+		@list.save
+		# if @list.valid? && @list.save
+		redirect_to list_path(@list)
 		else
 			render "new"
 		end
