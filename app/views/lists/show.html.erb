@@ -53,6 +53,10 @@ Wishlist link: <%= link_to @list.url, @list.url, target: '_blank' %><br>
 				<li class="flex-item">Need: <%= item.quantity %></li>
 				<li class="flex-item">Has: <%= item.has_amount %></li>
 			</ul>
+			<ul class="flex-container item-stats">
+				<li class="flex-item"><%= item.list.shelter.name %></li>
+				<li class="flex-item"><%= item.list.shelter.city %>, <%= item.list.shelter.state %></li>
+			</ul>
 		</div>
 
 		<%= link_to item.button_text, item.button_url, target: "_blank", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" %>
