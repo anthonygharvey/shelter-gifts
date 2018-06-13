@@ -14,7 +14,6 @@ class SessionsController < ApplicationController
 				u.password = SecureRandom.base64(25)
 				u.username = SecureRandom.base64(25)
 			end
-			binding.pry
 			session[:user_id] = user.id
 			if user.shelter == nil
 				redirect_to new_user_shelter_path(user)

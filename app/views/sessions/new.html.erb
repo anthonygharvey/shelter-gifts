@@ -18,9 +18,10 @@
 			</div>
 		</div>
 		<div class="mdl-card__actions mdl-card--border">
-			<%= submit_tag "Login", class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
+			<%= submit_tag "Login", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored" %>
+		</div>
+		<div class="mdl-card__actions mdl-card--border">
+			<%= link_to('Login with Facebook', '/auth/facebook', class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored") %>		
 		</div>
 	<% end %>
-	<br>
-	<%= link_to('Log in with Facebook!', '/auth/facebook') %>
 </div>
