@@ -41,7 +41,8 @@ class List < ApplicationRecord
 		items = page.css("li[data-id]")
 		items.each do |item|
 			i = self.items.new
-			next if item.css("span[id^=itemName]").text == "This title is no longer available"
+			next if item.css("span[id^=itemName]").text == "This title is no longer available" ||
+							item.css("a.a-link-normal").empty?
 
 			i.name = item.css("a[id^=itemName]").text
 			if item.attribute("data-price").value == "-Infinity"
