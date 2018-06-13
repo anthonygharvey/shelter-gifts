@@ -10,6 +10,7 @@ class SheltersController < ApplicationController
 	def create
 		@user = User.find(params[:user_id])
 		@shelter = @user.build_shelter(shelter_params)
+		prepend_http(@shelter.website_url)
 		if @shelter.save
 			redirect_to shelter_path(@shelter)
 		else
@@ -34,5 +35,11 @@ class SheltersController < ApplicationController
 	private
 	def shelter_params
 		params.require(:shelter).permit(:name, :city, :state, :ein, :shelter_type, :description, :website_url)
+	end
+
+	def prepend_http(url)
+		if url.match(/http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\//) == nil
+			url.prepend("http://")
+		end
 	end
 end

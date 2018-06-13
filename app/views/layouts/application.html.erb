@@ -26,7 +26,8 @@
             <% elsif current_user.shelter != nil%>
               <%= link_to 'My Shelter', shelter_path(current_user.shelter), {class: "mdl-navigation__link"} %>
               <%= link_to 'Wishlists', shelter_lists_path(current_user.shelter), {class: "mdl-navigation__link"} %>
-            <% else%>
+              <%= link_to 'Logout', logout_path, {class: "mdl-navigation__link"} %>
+            <% else %>
               <%= link_to 'Logout', logout_path, {class: "mdl-navigation__link"} %>
             <% end %>
           </nav>

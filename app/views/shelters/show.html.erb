@@ -9,7 +9,9 @@
 		Type: <%= @shelter.shelter_type %><br>
 		<br>
 		<p>Description: <%= @shelter.description %></p>
-		Website: <%= link_to @shelter.name, @shelter.website_url, target: "_blank" %>
+		<% if @shelter.website_url != "" %>
+			Website: <%= link_to @shelter.name, @shelter.website_url, target: "_blank" %>
+		<% end %>
   </div>
 
 </div>
