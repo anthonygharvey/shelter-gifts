@@ -18,3 +18,7 @@
 document.addEventListener('turbolinks:load', function() {
   componentHandler.upgradeDom();
 });
+
+function show_progress_bar(id) {
+  document.getElementById(id).style.display = "block";
+}

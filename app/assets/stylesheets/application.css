@@ -53,3 +53,7 @@ div.field_with_errors > label {
 .item-photo {
 	margin: auto
 }
+
+#list_progress_bar {
+  display: none;
+}
