@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_08_192356) do
+ActiveRecord::Schema.define(version: 2018_06_13_170319) do
 
   create_table "items", force: :cascade do |t|
     t.integer "list_id"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2018_06_08_192356) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uid"
   end
 
 end
