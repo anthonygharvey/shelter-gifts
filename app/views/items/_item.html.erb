@@ -11,7 +11,12 @@
 			<li class="flex-item">Has: <%= item.has_amount %></li>
 		</ul>
 		<ul class="flex-container item-stats">
-			<li class="flex-item"><%= item.list.shelter.name %></li>
+			<li class="flex-item">
+				<% if item.list.shelter.website_url? %>
+					<%= link_to item.list.shelter.name, item.list.shelter.website_url, target: "_blank" %>
+				<% else %>
+					<%= item.list.shelter.name %></li>
+				<% end %>
 			<li class="flex-item"><%= item.list.shelter.city %>, <%= item.list.shelter.state %></li>
 		</ul>
 	</div>
