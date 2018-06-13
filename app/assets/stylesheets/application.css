@@ -14,13 +14,24 @@
  *= require_self
  */
 
+ .page-content {
+  margin: auto;
+  width: 90%;
+  padding: 10px;
+}
+
 .mdl-layout {
 	align-items: center;
   justify-content: center;
 }
 
 .mdl-layout__content {
+  width: 1366px;
 	padding: 24px;	
+}
+
+.demo-card-square {
+  margin: 10px;
 }
 
  .demo-card-wide.mdl-card {
@@ -28,8 +39,6 @@
 }
 .demo-card-wide > .mdl-card__title {
   color: rgba(0,0,0, 0.87);
-  /* height: 176px; */
-  /* background: url('../assets/demos/welcome_card.jpg') center / cover; */
 }
 .demo-card-wide > .mdl-card__menu {
   color: #fff;
@@ -44,9 +53,10 @@ div.field_with_errors > label {
   margin: 0;
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
 }
 
-.item-stats {
+.items, .item-stats {
 	justify-content: space-between;
 }
 
