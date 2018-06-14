@@ -51,7 +51,7 @@ class List < ApplicationRecord
 				i.price = item.attribute("data-price").value
 			end
 			i.photo =item.css("img").attribute("src").value
-			i.prime_status =item.css("div[data-item-prime-info] i.a-icon-prime")
+			i.prime_status = true if !item.css("div[data-item-prime-info] i.a-icon-prime").empty?
 			i.comment =item.css("span[id^=itemComment]").text
 			i.quantity =item.css("span[id^=itemRequested_]").text
 			i.priority =item.css("span[id^=itemPriorityLabel]").text
