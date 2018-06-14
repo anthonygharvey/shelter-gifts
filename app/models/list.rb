@@ -18,7 +18,6 @@ class List < ApplicationRecord
 
 	def items_by_price_range(lower, upper)
 		self.items.select do |item|
-			# binding.pry
 			(lower.to_f * 100) <= item.to_cents && item.to_cents <= (upper.to_f * 100)
 		end
 	end

@@ -38,8 +38,6 @@ Wishlist link: <%= link_to @list.url, @list.url, target: '_blank' %><br>
 <br>
 <br>
 
-
-<%# use this to display each item for regular users! %>
 <ul class="flex-container">
 	<%= render :collection => @list.items, :partial => "items/item", :as => :item %>
 </ul>
