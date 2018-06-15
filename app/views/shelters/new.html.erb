@@ -2,20 +2,23 @@
 	<div class="mdl-card__title">
 		<h2 class="mdl-card__title-text">Create a Shelter</h2>
 	</div>
+	
 	<div class="mdl-card__supporting-text">
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 		Mauris sagittis pellentesque lacus eleifend lacinia...
-	
 		<br>
 		<br>
+		
 		<%= form_for([@user, @shelter]) do |f| %>
 			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 				<%= f.label :name, "Name", class: "mdl-textfield__label" %>
 				<%= f.text_field :name, class: "mdl-textfield__input" %>
+				
 				<% if @shelter.errors[:name] %>
 					<span class="field_with_errors"><%= @shelter.errors[:name].to_sentence %></span>
 				<% end %>
 			</div>
+			
 			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 				<%= f.label :city, "City", class: "mdl-textfield__label" %>
 				<%= f.text_field :city, class: "mdl-textfield__input" %>
@@ -23,6 +26,7 @@
 					<span class="field_with_errors"><%= @shelter.errors[:city].to_sentence %></span>
 				<% end %>				
 			</div>
+			
 			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 				<%= f.label :state, "State", class: "mdl-textfield__label" %>
 				<%= f.text_field :state, class: "mdl-textfield__input" %>
@@ -30,6 +34,7 @@
 					<span class="field_with_errors"><%= @shelter.errors[:state].to_sentence %></span>
 				<% end %>								
 			</div>
+			
 			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 				<%= f.label :ein, "Employee Identification Number", class: "mdl-textfield__label" %>
 				<%= f.text_field :ein, class: "mdl-textfield__input" %>
@@ -37,6 +42,7 @@
 					<span class="field_with_errors"><%= "EIN " + @shelter.errors[:ein].to_sentence %></span>
 				<% end %>
 			</div>
+			
 			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 				<%= f.label :shelter_type, "Shelter Type:", class: "mdl-textfield__label" %>
 				<%= f.select :shelter_type, options_for_select(Shelter::SHELTER_TYPES), {label: "Shelter Type:"}, {class:	 "mdl-textfield__input"} %>
@@ -46,13 +52,15 @@
 				<label class="mdl-textfield__label">Shelter Description</label>
 				<textarea class="mdl-textfield__input" type="text", name="shelter[description]", id="shelter_description"></textarea>
 			</div>
+			
 			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 				<label class="mdl-textfield__label">Website URL</label>
 				<textarea class="mdl-textfield__input" type="text", name="shelter[website_url]", id="shelter_website_url"></textarea>
 			</div>
-		</div>
-		<div class="mdl-card__actions mdl-card--border">
-			<%= submit_tag "Create Shelter", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" %>
-		</div>
-	<% end %>
+		
+			<div class="mdl-card__actions mdl-card--border">
+				<%= submit_tag "Create Shelter", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" %>
+			</div>
+		<% end %>
+	</div>
 </div>
