@@ -31,6 +31,7 @@ gem 'material_design_lite-sass'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
+gem 'rufus-scheduler'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

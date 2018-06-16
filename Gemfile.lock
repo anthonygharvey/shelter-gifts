@@ -83,6 +83,8 @@ GEM
       dotenv (= 2.4.0)
       railties (>= 3.2, < 6.0)
     erubi (1.7.1)
+    et-orbi (1.1.2)
+      tzinfo
     execjs (2.7.0)
     factory_bot (4.10.0)
       activesupport (>= 3.0.0)
@@ -94,6 +96,9 @@ GEM
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.25)
+    fugit (1.1.1)
+      et-orbi (~> 1.1, >= 1.1.1)
+      raabro (~> 1.1)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     hashie (3.5.7)
@@ -149,6 +154,7 @@ GEM
       method_source (~> 0.9.0)
     public_suffix (3.0.2)
     puma (3.11.4)
+    raabro (1.1.5)
     rack (2.0.5)
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
@@ -199,6 +205,8 @@ GEM
     rspec-support (3.7.1)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
+    rufus-scheduler (3.5.0)
+      fugit (~> 1.1, >= 1.1.1)
     sass (3.5.6)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -272,6 +280,7 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.0)
   rspec-rails
+  rufus-scheduler
   sass-rails (~> 5.0)
   selenium-webdriver
   shoulda-matchers (~> 3.0)
@@ -287,4 +296,4 @@ RUBY VERSION
    ruby 2.3.3p222
 
 BUNDLED WITH
-   1.16.1
+   1.16.2

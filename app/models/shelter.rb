@@ -11,4 +11,17 @@ class Shelter < ApplicationRecord
 	scope :by_type,		-> shelter_type { where(shelter_type: shelter_type) if shelter_type.present? }
 
 	SHELTER_TYPES = ["Adult homeless", "Youth homeless", "Family homeless", "Religious", "Transitional housing/shelter program", "Government run", "Halfway house", "Wet shelter"]
+
+	def destroy
+		self.lists.each do |list|
+			list.destroy
+		end
+		self.destroy
+	end
+
+	def self.reset_shelters
+		Shelter.all.each do |shelter|
+			shelter.destroy if !shelter.verified
+		end
+	end
 end
