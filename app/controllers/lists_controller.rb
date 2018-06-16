@@ -36,10 +36,7 @@ class ListsController < ApplicationController
 
 	def destroy
 		@list = List.find(params[:id])
-		@list.items.each do |item|
-			item.delete
-		end
-		@list.delete
+		@list.destroy
 		redirect_to shelter_path(@current_user.shelter)
 	end
 

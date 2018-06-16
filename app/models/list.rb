@@ -22,6 +22,13 @@ class List < ApplicationRecord
 		end
 	end
 
+	def destroy
+		self.items.each do |item|
+			item.delete
+		end
+		self.delete
+	end
+
 	def get_items(list_url)
 		user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_0) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.854.0 Safari/535.2"
 		page = Nokogiri::HTML(open(list_url, 'User-Agent' => "Ruby/#{RUBY_VERSION}"))
