@@ -5,16 +5,16 @@
 #   gem 'sqlite3'
 #
 development:
- adapter: mysql2
+ adapter: sqlite3
  encoding: utf8
- database: my_app_development
+ database: db/development.sqlite3
  pool: 5
  username: root
  password:
 
 test:
   adapter: sqlite3
-  database: db/development.sqlite3
+  database: db/test.sqlite3
   pool: 5
   timeout: 5000
 
