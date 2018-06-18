@@ -80,3 +80,8 @@ div.field_with_errors > label {
 .welcome-text {
   width: 60%;
 }
+
+.welcome-text p, .about-text p, .welcome-text li {
+  font-size: 1.2em;
+  line-height: 1.7em;
+}
