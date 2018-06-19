@@ -12,16 +12,16 @@ class Shelter < ApplicationRecord
 
 	SHELTER_TYPES = ["Adult homeless", "Youth homeless", "Family homeless", "Religious", "Transitional housing/shelter program", "Government run", "Halfway house", "Wet shelter"]
 
-	def destroy
+	def remove
 		self.lists.each do |list|
 			list.destroy
 		end
-		self.destroy
+		Shelter.find(self.id).destroy
 	end
 
 	def self.reset_shelters
 		Shelter.all.each do |shelter|
-			shelter.destroy if !shelter.verified
+			shelter.remove if !shelter.verified
 		end
 	end
 end
