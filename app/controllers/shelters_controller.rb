@@ -38,7 +38,7 @@ class SheltersController < ApplicationController
 	end
 
 	def prepend_http(url)
-		if url.match(/http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\//) == nil
+		if url != "" && url.match(/http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\//) == nil
 			url.prepend("http://")
 		end
 	end

@@ -4,8 +4,8 @@
 	</div>
 	
 	<div class="mdl-card__supporting-text">
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-		Mauris sagittis pellentesque lacus eleifend lacinia...
+		Please enter the information about your shelter.<br>
+		You can enter the wishlist info on the next page.
 		<br>
 		<br>
 		
@@ -55,7 +55,8 @@
 			
 			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 				<label class="mdl-textfield__label">Website URL</label>
-				<textarea class="mdl-textfield__input" type="text", name="shelter[website_url]", id="shelter_website_url"></textarea>
+				<%= f.text_field :website_url, class: "mdl-textfield__input" %>
+				
 			</div>
 		
 			<div class="mdl-card__actions mdl-card--border">
