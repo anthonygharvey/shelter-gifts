@@ -1,6 +1,6 @@
-![forthebadge](https://forthebadge.com/images/badges/made-with-ruby.svg "Made With Ruby")]
+![forthebadge](https://forthebadge.com/images/badges/made-with-ruby.svg "Made With Ruby")
 
-# Shelter Gifts - An app that makes it easy to donate items of need **directly** to homeless shelters across the country!
+# Shelter Gifts - An app that makes it easy to donate items of need directly to homeless shelters across the country!
 
 ## Description
 Shelter Gifts makes it easy for visitors to browse a curated list of items that are needed by shelters across the country.  The list of items come directly from the individual shelters; specifically from their Amazon Wishlists.
@@ -10,7 +10,7 @@ Shelters can register with the app and save a link to their Amazon Wishlist.  On
 Visitors can browse the list of items needed on the homepage, where each item is presented with a photo, description, price and information about the shelter and their need for the item.  Each item is also presented with a button for visitors to add the item directly to their Amazon cart, where they can purchase the item and have it shipped by Amazon **directly** to the shelter that requested it!
 
 ## Demo
-App link: <a href="https://shelter-gifts.herokuapp.com/" target="_blank">Shelter Gifts</a>
+App link: <a href="https://shelter-gifts.herokuapp.com/" target="_blank">Shelter Gifts</a><br><br>
 Shelter Gifts is currently in **demonstration mode** and currently has only one verified shelter, the <a href="https://www.mensshelterofcharlotte.org/" target="_blank">Men's Shelter of Charlotte</a>.  
 
 In demo mode, you can register (or login via Facebook), create a shelter and save an Amazon Wishlist URL and the items will be added to the collection and displayed on the homepage.  The open registration is intended to demonstrate the functionality of the app; however, the app **resets every 5 minutes** to only show verified shelters and their items (the Men's Shelter of Charlotte currently).
@@ -23,7 +23,7 @@ To install and run the app on your local machine:
 4. Run `bundle install` to install the necessary gems and dependencies
 5. Run `rake db:migrate` to perform the database migrations
 6. Run `rails s` to start a local rails server
-7. Go to [localhost:3000](localhost:3000) to view the app!
+7. Go to <a href="localhost:3000" target="_blank">localhost:3000</a> to view the app!
 
 ## Tests
 The tests for this app were written with <a href="http://rspec.info/" target="_blank">RSpec</a>, the <a href="https://github.com/stympy/faker" target="_blank">faker gem</a> (to generate fake data for the tests) and the <a href="https://github.com/thoughtbot/shoulda-matchers" target="_blank">shoulda-matchers gem</a> (to write more readable relationship tests).
