@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
 	end
 
 	def create
+		# Check for omniauth
 		if auth = request.env["omniauth.auth"]
 			user = User.find_or_create_by(uid: auth['uid']) do |u|
 				u.first_name, u.last_name = auth['info']['name'].split(' ')
@@ -21,7 +22,7 @@ class SessionsController < ApplicationController
 				redirect_to shelter_path(user.shelter)
 			end
 		else
-			
+		# If not omniauth, regular user login
 			user = User.find_by(:email => params[:email])
 			if user && user.authenticate(params[:password])
 				session[:user_id] = user.id
