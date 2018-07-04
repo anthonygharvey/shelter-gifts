@@ -8,7 +8,7 @@
 /.bundle
 
 # Used by dotenv library to load environment variables.
-# .env
+/.env
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
