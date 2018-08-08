@@ -1,11 +1,5 @@
 language: ruby
 rvm:
   - 2.3.3
-bundler_args: --without development production --quite
-env:
-  - TEST_SUITE=controllers
-  - TEST_SUITE=factories
-  - TEST_SUITE=helpers
-  - TEST_SUITE=models
-  - TEST_SUITE=views
-script: - bundle exec rake spec/$TEST_SUITE/* 
+script: - bundle exec rake db:setup
+script: - bundle exec rake spec
