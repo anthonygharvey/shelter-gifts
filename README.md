@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/anthonygharvey/shelter-gifts.svg?branch=master)](https://travis-ci.com/anthonygharvey/shelter-gifts)
+
 ![forthebadge](https://forthebadge.com/images/badges/made-with-ruby.svg "Made With Ruby")
 
 # Shelter Gifts - An app that makes it easy to donate items of need directly to homeless shelters across the country!
