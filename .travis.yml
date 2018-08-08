@@ -1,5 +1,8 @@
 language: ruby
 rvm:
   - 2.3.3
-bundler_args: --without development production --quiet
-script: - bundle exec rake
+bundler_args: --jobs=2
+script:
+script:
+  - bundle exec rake db:setup
+  - bundle exec rake spec
