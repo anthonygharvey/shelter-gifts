@@ -8,8 +8,7 @@ class SheltersController < ApplicationController
 	end
 
 	def create
-		@user = User.find(params[:user_id])
-		@shelter = @user.build_shelter(shelter_params)
+		@shelter = current_user.build_shelter(shelter_params)
 		prepend_http(@shelter.website_url)
 		if @shelter.save
 			redirect_to shelter_path(@shelter)
@@ -20,7 +19,7 @@ class SheltersController < ApplicationController
 	end
 	
 	def show
-		@shelter = Shelter.find(params[:id])
+		@shelter = current_user.shelter
 	end
 
 	def edit
