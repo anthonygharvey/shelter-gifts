@@ -4,7 +4,7 @@
 			<h2 class="mdl-card__title-text item-photo"><img src="<%= item.photo %>" alt=""></h2>
 		</div>
 		<div class="mdl-card__supporting-text">
-			<%= item.name %>
+			<%= item.name.truncate(75) %>
 			<h4>$<%= item.price %></h4>
 			<ul class="flex-container item-stats">
 				<li class="flex-item">Priority: <%= item.priority.capitalize %></li>
