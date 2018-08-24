@@ -1,3 +1,12 @@
+	<%= form_tag(items_path, method: :get) do %>
+		City <%= text_field_tag "shelter[city]", params["[shelter][city]"] %>
+		State <%= text_field_tag "shelter[state]", params["[shelter][state]"] %>
+		Type <%= select_tag "shelter[shelter_type]", options_for_select(Shelter::SHELTER_TYPES), include_blank: true   %>
+		Item Priority <%= select_tag "priority", options_for_select(["High", "Medium", "Low"]), include_blank: true %>
+		<%= submit_tag "Search", name: nil %>
+	<% end %>
+
 <ul class="flex-container">
-		<%= render :collection => @all_items, :partial => "item", as: :item %>
+	<br>
+	<%= render :collection => @all_items, :partial => "item", as: :item %>
 </ul>

@@ -1,8 +1,27 @@
 class ItemsController < ApplicationController
 	def index
-		@all_items = Item.all # a list of all the items to show on the homepage for regular users
-		# @list = List.find(params[:list_id])
-		# @items = @list.items
-	end
+		if params["shelter"]
+			@shelters = Shelter.all
+				if params["shelter"]["city"]
+					@shelters = @shelters.by_city(params["shelter"]["city"])
+				end
+				if params["shelter"]["state"]
+					@shelters = @shelters.by_state(params["shelter"]["state"])
+				end
+				if params["shelter"]["shelter_type"]
+					@shelters = @shelters.by_type(params["shelter"]["shelter_type"])
+				end
+			@all_items = @shelters.collect do |s|
+				if params["priority"] != ""
+					s.items.where('priority LIKE ?', params["priority"])
+				else
+					s.items
+				end
+			end.flatten
+		else
+			@all_items = Item.all
+		end
 	
+	end
+
 end
