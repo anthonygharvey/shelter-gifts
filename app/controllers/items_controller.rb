@@ -13,7 +13,9 @@ class ItemsController < ApplicationController
 				end
 			@all_items = @shelters.collect do |s|
 				if params["priority"] != ""
-					s.items.where('priority LIKE ?', params["priority"])
+					s.items.select do |i|
+						i.priority == params["priority"].downcase
+					end
 				else
 					s.items
 				end
