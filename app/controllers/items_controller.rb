@@ -1,18 +1,21 @@
 class ItemsController < ApplicationController
 	def index
-		if params["shelter"]
+		search = [params["city"], params["state"], params["shelter_type"], params["priority"]]
+		if search.all?{|s| s == nil}
+			@all_items = Item.all
+		else
 			@shelters = Shelter.all
-				if params["shelter"]["city"]
-					@shelters = @shelters.by_city(params["shelter"]["city"])
+				if params["city"]
+					@shelters = @shelters.by_city(params["city"])
 				end
-				if params["shelter"]["state"]
-					@shelters = @shelters.by_state(params["shelter"]["state"])
+				if params["state"]
+					@shelters = @shelters.by_state(params["state"])
 				end
-				if params["shelter"]["shelter_type"]
-					@shelters = @shelters.by_type(params["shelter"]["shelter_type"])
+				if params["shelter_type"]
+					@shelters = @shelters.by_type(params["shelter_type"])
 				end
 			@all_items = @shelters.collect do |s|
-				if params["priority"] != ""
+				if (params["priority"] != "" && params["priority"] != nil)
 					s.items.select do |i|
 						i.priority == params["priority"].downcase
 					end
@@ -20,9 +23,8 @@ class ItemsController < ApplicationController
 					s.items
 				end
 			end.flatten
-		else
-			@all_items = Item.all
 		end
+		
 	
 	end
 
