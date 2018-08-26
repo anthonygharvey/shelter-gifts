@@ -1,10 +1,12 @@
-<%= form_tag(items_path, method: :get) do %>
-	City <%= text_field_tag "shelter[city]", params["[shelter][city]"] %>
-	State <%= text_field_tag "shelter[state]", params["[shelter][state]"] %>
-	Type <%= select_tag "shelter[shelter_type]", options_for_select(Shelter::SHELTER_TYPES), include_blank: true   %>
-	Item Priority <%= select_tag "priority", options_for_select(["Highest", "High", "Medium", "Low", "Lowest"]), include_blank: true %>
-	<%= submit_tag "Search", name: nil %>
-<% end %>
+<div class="container">
+	<%= form_tag(items_path, method: :get) do %>
+		City <%= text_field_tag "shelter[city]", params["[shelter][city]"] %>
+		State <%= text_field_tag "shelter[state]", params["[shelter][state]"] %>
+		Type <%= select_tag "shelter[shelter_type]", options_for_select(Shelter::SHELTER_TYPES), include_blank: true   %>
+		Item Priority <%= select_tag "priority", options_for_select(["Highest", "High", "Medium", "Low", "Lowest"]), include_blank: true %>
+		<%= submit_tag "Search", name: nil %>
+	<% end %>
+</div>
 
 <ul class="flex-container">
 	<br>
