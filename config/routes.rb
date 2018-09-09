@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :items, only: [:index]
 
   root 'items#index'
+  # root 'sessions#new'
   get '/:page' => 'static#show'
 
 end

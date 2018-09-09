@@ -24,8 +24,10 @@ class ItemsController < ApplicationController
 				end
 			end.flatten
 		end
-		
-	
+		respond_to do |format|
+			format.html { render :index }
+			format.json { render json: @all_items, include: [:list, "list.shelter"], status: 200 }
+			format.js { }
+		end
 	end
-
 end
