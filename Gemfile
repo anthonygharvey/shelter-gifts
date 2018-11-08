@@ -32,6 +32,7 @@ gem 'omniauth-facebook'
 gem 'dotenv-rails'
 gem 'rufus-scheduler'
 gem "loofah", ">= 2.2.3"
+gem "sprockets", ">= 3.7.2"
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
