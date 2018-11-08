@@ -33,6 +33,7 @@ gem 'dotenv-rails'
 gem 'rufus-scheduler'
 gem "loofah", ">= 2.2.3"
 gem "sprockets", ">= 3.7.2"
+gem "rubyzip", ">= 1.2.2"
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
