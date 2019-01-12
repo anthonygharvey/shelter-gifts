@@ -1,5 +1,5 @@
 <div class="flex-container">
-	<%= form_tag(items_path, method: :get) do %>
+	<%= form_tag(items_path, method: :get, id: 'search_form') do %>
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 			<%= text_field_tag "[city]", params["city"], class: "mdl-textfield__input", id: "city" %>
 			<%= label_tag 'city', nil, class: "mdl-textfield__label" %>
@@ -25,5 +25,6 @@
 
 <ul class="flex-container" id="items">
 	<br>
-	
+	<%= render :collection => @all_items, :partial => 'item', as: :item %>
+
 </ul>
