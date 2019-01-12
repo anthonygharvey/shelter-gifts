@@ -23,52 +23,11 @@
     <!-- Always shows a header, even in smaller screens. -->
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header">
-        <div class="mdl-layout__header-row">
-          <!-- Title -->
-          <span class="mdl-layout-title"><%= link_to 'Shelter Gifts', root_path %></span>
-          <!-- Add spacer, to align navigation to the right -->
-          <div class="mdl-layout-spacer"></div>
-          <!-- Navigation. We hide it in small screens. -->
-          <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <% if !logged_in? %>
-              <%= link_to 'Login', login_path, {class: "mdl-navigation__link"} %>
-              <%= link_to 'Shelter Signup', register_path, {class: "mdl-navigation__link"} %>
-            <% elsif current_user.shelter != nil%>
-              <%= link_to 'My Shelter', shelter_path(current_user.shelter), {class: "mdl-navigation__link"} %>
-              <%= link_to 'Logout', logout_path, {class: "mdl-navigation__link"} %>
-            <% else %>
-              <%= link_to 'Logout', logout_path, {class: "mdl-navigation__link"} %>
-            <% end %>
-            <%= link_to 'About', '/about', {class: "mdl-navigation__link"} %>
-          </nav>
-        </div>
+				<%= render 'navigation' %>
       </header>
       <main class="mdl-layout__content">
-        <div class="page-content">
-          <% if request.env['PATH_INFO'] =='/' && !logged_in? %>
-              <h2>Welcome to Shelter Gifts!</h2>
-            <div class="welcome-info flex-container">
-              <li class="flex-item welcome-photo">
-                <img src="<%= asset_path('support.jpg') %>" alt="Six hands interlocked">
-              </li>
-              
-              <li class="flex-item welcome-text">
-                <p>Shelter Gifts is a collection of items needed by shelters across the country.  The list is curated by the shelters and for the shelters.  The shelters create a wishlist of items they need and, once registered, save a link to their wishlist and its items are added to the Shelter Gifts collection. </p>
-                <p>Feel free to browse the collection of items needed by various shelters.  You can purchase items from Amazon and have them shipped directly to the shelter in need!</p>
-                <p>Are you a shelter in need of in-kind donations to better serve your community?  If so, please register your shelter and get started in a few easy steps:</p>
-                <ol>
-                  <li><a href="https://www.amazon.com/gp/help/customer/display.html?nodeId=501088" target="_blank">Create an Amazon Wishlist</a> of items your shelter needs (if you don't have one already)</li>
-                  <li>Fill out a simple sign up form and tell us a few details about your shelter</li>
-                  <li>Paste the link to your Amazon Wishlist to our Create a New Wishlist page </li>
-                  <li>That's it!  The items on your wishlist will be added to the collection!</li>
-                </ol>
-              </li>
-            </div>
-          <% end %>
-          <%= yield %>
-          <br>
-          
-        </div>
+				<%= render 'welcome' %>
+				<%= yield %>
       </main>
     </div>
   </body>
