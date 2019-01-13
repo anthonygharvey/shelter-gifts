@@ -1,24 +1,26 @@
-<div class="flex-container">
-	<%= form_tag(items_path, method: :get, id: 'search_form') do %>
-		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-			<%= text_field_tag "[city]", params["city"], class: "mdl-textfield__input", id: "city" %>
-			<%= label_tag 'city', nil, class: "mdl-textfield__label" %>
-		</div>
+<% if !logged_in? && request.env['PATH_INFO'] =='/' %>
+	<div class="flex-container">
+		<%= form_tag(items_path, method: :get, id: 'search_form') do %>
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<%= text_field_tag "[city]", params["city"], class: "mdl-textfield__input", id: "city" %>
+				<%= label_tag 'city', nil, class: "mdl-textfield__label" %>
+			</div>
 
-		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-			<%= text_field_tag "[state]", params["state"], class: "mdl-textfield__input", id: "state" %>
-			<%= label_tag 'state', nil, class: "mdl-textfield__label" %>
-		</div><br>
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<%= text_field_tag "[state]", params["state"], class: "mdl-textfield__input", id: "state" %>
+				<%= label_tag 'state', nil, class: "mdl-textfield__label" %>
+			</div><br>
 
-		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-			<%= select_tag "[shelter_type]", options_for_select(Shelter::SHELTER_TYPES, selected: params[:shelter_type]), class: "mdl-textfield__input", include_blank: true, id: "type" %>
-			<%= label_tag 'type', 'Shelter Type', class: "mdl-textfield__label" %>
-		</div>
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<%= select_tag "[shelter_type]", options_for_select(Shelter::SHELTER_TYPES, selected: params[:shelter_type]), class: "mdl-textfield__input", include_blank: true, id: "type" %>
+				<%= label_tag 'type', 'Shelter Type', class: "mdl-textfield__label" %>
+			</div>
 
-		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-			<%= select_tag "priority", options_for_select(["Highest", "High", "Medium", "Low", "Lowest"], selected: params[:priority]), class: "mdl-textfield__input", include_blank: true, id: "priority" %>
-			<%= label_tag 'priority', 'Item Priority', class: "mdl-textfield__label" %>
-		</div><br>
-		<%= submit_tag "Search", name: nil, class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect", id: "search" %>
-	<% end %>
-</div>
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<%= select_tag "priority", options_for_select(["Highest", "High", "Medium", "Low", "Lowest"], selected: params[:priority]), class: "mdl-textfield__input", include_blank: true, id: "priority" %>
+				<%= label_tag 'priority', 'Item Priority', class: "mdl-textfield__label" %>
+			</div><br>
+			<%= submit_tag "Search", name: nil, class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect", id: "search" %>
+		<% end %>
+	</div>
+<% end %>
