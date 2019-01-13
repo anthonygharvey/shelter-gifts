@@ -1,3 +1,4 @@
+<% binding.pry %>
 <div class="page-content">
 	<% if request.env['PATH_INFO'] =='/' && !logged_in? %>
 			<h2>Welcome to Shelter Gifts!</h2>
@@ -20,5 +21,9 @@
 		</div>
 	<% end %>
 	<br>
-	
+	<%= render 'search_form' %>
+	<br>
+	<ul class="flex-container" id="items">
+		<%= render :collection => @all_items, :partial => 'items/item', as: :item %>
+	</ul>
 </div>

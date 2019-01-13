@@ -4,4 +4,9 @@ class StaticController < ApplicationController
 	def show
 		render params[:page]
 	end
+
+	def index
+		@all_items = Item.all
+		render 'welcome'
+	end
 end

@@ -13,8 +13,7 @@ Rails.application.routes.draw do
   end
   resources :items, only: [:index]
 
-  root 'items#index'
-  # root 'sessions#new'
+	root 'static#index'
   get '/:page' => 'static#show'
 
 end
