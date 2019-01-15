@@ -1,4 +1,4 @@
-$(function () {
+$(document).on('turbolinks:load', function () {
 	$("form input#search").on("click", function (e) {
 		$.ajax({
 			method: 'GET',
@@ -10,8 +10,9 @@ $(function () {
 				priority: $('#priority')[0].value
 			},
 			dataType: "script"
+		}).success(function () {
+			$('.page-content').html('')
 		})
 		e.preventDefault();
 	});
 })
-
