@@ -32,7 +32,7 @@
 		<tbody>
 			<% @shelter.lists.each do |list| %>
 				<tr>
-					<td class="mdl-data-table__cell--non-numeric"><%= link_to list.name, list_path(list) %></td>
+					<td class="mdl-data-table__cell--non-numeric"><%= link_to list.name, list_path(list), class: "wishlist" %></td>
 					<td><%= list.items.count %></td>
 					<td>$2.90</td>
 				</tr>

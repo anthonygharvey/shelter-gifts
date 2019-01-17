@@ -9,9 +9,10 @@ class ItemsController < ApplicationController
 			@all_items = Item.all
 		else
 			@shelters = Shelter.all
-			@shelters = @shelters.by_city(params[:city])
-			@shelters = @shelters.by_state(params[:state])
-			@shelters = @shelters.by_type(params[:shelter_type])
+				.by_city(params[:city])
+				.by_state(params[:state])
+				.by_type(params[:shelter_type])
+				
 			@all_items = @shelters.collect do |s|
 				if (params[:priority] != "" && params[:priority] != nil)
 					s.items.select { |i| i.priority == params[:priority].downcase }
