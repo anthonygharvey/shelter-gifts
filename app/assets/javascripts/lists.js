@@ -19,15 +19,14 @@ $(document).on('turbolinks:load', function () {
 
 function build_header(data) {
 	var header = ''
-	header += `<h1>${data.name}</h1>`
-	header += `<p>Description: ${data.description}<br>`
-	header += `Wishlist link:  <a href=${data.url} target='_blank'>${data.url}<br>`
+	header += `<h1>${data[0].shelter.name}</h1>`
+	header += `<p>Description: ${data[0].shelter.description}<br>`
+	header += `Wishlist link:  <a href=${data[0].shelter.url} target='_blank'>${data[0].shelter.url}<br>`
 	header += `<a href=/shelters/${data[0].shelter.id}>${data[0].shelter.name}</a>`
 	return header
 }
 
 function build_table(data) {
-	debugger
 	var table = ''
 	table += `<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">`
 	table += `<thead><tr>`
