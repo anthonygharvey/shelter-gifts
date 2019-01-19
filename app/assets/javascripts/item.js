@@ -1,9 +1,11 @@
 function build_item_cards(data) {
+	var shelter = data[0] ? data[0].shelter : data.shelter
+	var items = data[0] ? data : data.items
 	cards = `<br>`
 	cards += `<ul class="flex-container">`
-	data.forEach(item => {
+	items.forEach(item => {
 		var shelter_url = `
-			<a ${data[0].shelter.website_url ? `href="${data[0].shelter.website_url}" target='_blank'` : ''}>${data[0].shelter.name}</a>
+			<a ${shelter.website_url ? `href="${shelter.website_url}" target='_blank'` : ''}>${shelter.name}</a>
 		`
 		cards += `<li class="flex-item items">
 	<div class="demo-card-square mdl-card mdl-shadow--2dp">
@@ -20,7 +22,7 @@ function build_item_cards(data) {
 			</ul>
 			<ul class="flex-container item-stats">
 				<li class="flex-item">${shelter_url}</li>
-				<li class="flex-item">${data[0].shelter.city}, ${data[0].shelter.state}</li>
+				<li class="flex-item">${shelter.city}, ${shelter.state}</li>
 			</ul >
 		</div >
 

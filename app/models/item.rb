@@ -17,7 +17,7 @@ class Item < ApplicationRecord
 	end
 
 	def shelter
-		self.list.shelter
+		self.list&.shelter
 	end
 
 end

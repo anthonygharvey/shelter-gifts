@@ -6,27 +6,44 @@ $(document).on('turbolinks:load', function () {
 			method: 'GET',
 			url: this.href + '/items'
 		}).success(function (data) {
-			var $mainContainer = $('.main_container')
-			$mainContainer.html('')
-			$mainContainer.append(build_header(data))
-			$mainContainer.append(build_table(data))
-			$mainContainer.append(delete_button(data))
-			$mainContainer.append(build_item_cards(data))
+			build_list(data)
+		})
+		e.preventDefault()
+	})
+
+	$("#new_list").on("submit", function (e) {
+		$.ajax({
+			type: "POST",
+			url: this.action,
+			data: $(this).serialize()
+		}).success(function (data) {
+			build_list(data)
 		})
 		e.preventDefault()
 	})
 })
 
+function build_list(data) {
+	var $mainContainer = $('.main_container')
+	$mainContainer.html('')
+	$mainContainer.append(build_header(data))
+	$mainContainer.append(build_table(data))
+	$mainContainer.append(delete_button(data))
+	$mainContainer.append(build_item_cards(data))
+}
+
 function build_header(data) {
+	var shelter = data[0] ? data[0].shelter : data.shelter
 	var header = ''
-	header += `<h1>${data[0].shelter.name}</h1>`
-	header += `<p>Description: ${data[0].shelter.description}<br>`
-	header += `Wishlist link:  <a href=${data[0].shelter.url} target='_blank'>${data[0].shelter.url}<br>`
-	header += `<a href=/shelters/${data[0].shelter.id}>${data[0].shelter.name}</a>`
+	header += `<h1>${shelter.name}</h1>`
+	header += `<p>Description: ${shelter.description}<br>`
+	header += `Wishlist link:  <a href=${shelter.url} target='_blank'>${shelter.url}<br>`
+	header += `<a href=/shelters/${shelter.id}>${shelter.name}</a>`
 	return header
 }
 
 function build_table(data) {
+	var items = data[0] ? data : data.items
 	var table = ''
 	table += `<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">`
 	table += `<thead><tr>`
@@ -38,7 +55,7 @@ function build_table(data) {
 	table += `</tr></thead>`
 
 	table += `<tbody>`
-	data.forEach(item => {
+	items.forEach(item => {
 		table += build_table_row(item)
 	});
 	table += `</table>`
@@ -58,8 +75,9 @@ function build_table_row(item) {
 }
 
 function delete_button(data) {
+	var list = data[0] ? data[0].list : data
 	button = '<br>'
-	button += `<a href='/lists/${data[0].list.id}' data-method='delete' class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect", id="delete-button" rel="nofollow" data-upgraded=",MaterialButton,MaterialRipple" tabindex="0">Delete List<span class="mdl-button__ripple-container"><span class="mdl-ripple is-animating" style="width: 239.311px; height: 239.311px; transform: translate(-50%, -50%) translate(87px, 20px);"></span></span></a>`
+	button += `<a href='/lists/${list.id}' data-method='delete' class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect", id="delete-button" rel="nofollow" data-upgraded=",MaterialButton,MaterialRipple" tabindex="0">Delete List<span class="mdl-button__ripple-container"><span class="mdl-ripple is-animating" style="width: 239.311px; height: 239.311px; transform: translate(-50%, -50%) translate(87px, 20px);"></span></span></a>`
 	return button
 }
 
