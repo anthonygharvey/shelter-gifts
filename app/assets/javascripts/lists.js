@@ -4,7 +4,7 @@ $(document).on('turbolinks:load', function () {
 	$(".wishlist").on("click", function (e) {
 		$.ajax({
 			method: 'GET',
-			url: this.href
+			url: this.href + '/items'
 		}).success(function (data) {
 			var $mainContainer = $('.main_container')
 			$mainContainer.html('')
@@ -22,11 +22,12 @@ function build_header(data) {
 	header += `<h1>${data.name}</h1>`
 	header += `<p>Description: ${data.description}<br>`
 	header += `Wishlist link:  <a href=${data.url} target='_blank'>${data.url}<br>`
-	header += `<a href=/shelters/${data.shelter.id}>${data.shelter.name}</a>`
+	header += `<a href=/shelters/${data[0].shelter.id}>${data[0].shelter.name}</a>`
 	return header
 }
 
 function build_table(data) {
+	debugger
 	var table = ''
 	table += `<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">`
 	table += `<thead><tr>`
@@ -38,7 +39,7 @@ function build_table(data) {
 	table += `</tr></thead>`
 
 	table += `<tbody>`
-	data.items.forEach(item => {
+	data.forEach(item => {
 		table += build_table_row(item)
 	});
 	table += `</table>`
@@ -59,7 +60,7 @@ function build_table_row(item) {
 
 function delete_button(data) {
 	button = '<br>'
-	button += `<a href='/lists/${data.id}' data-method='delete' class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect", id="delete-button" rel="nofollow" data-upgraded=",MaterialButton,MaterialRipple" tabindex="0">Delete List<span class="mdl-button__ripple-container"><span class="mdl-ripple is-animating" style="width: 239.311px; height: 239.311px; transform: translate(-50%, -50%) translate(87px, 20px);"></span></span></a>`
+	button += `<a href='/lists/${data[0].list.id}' data-method='delete' class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect", id="delete-button" rel="nofollow" data-upgraded=",MaterialButton,MaterialRipple" tabindex="0">Delete List<span class="mdl-button__ripple-container"><span class="mdl-ripple is-animating" style="width: 239.311px; height: 239.311px; transform: translate(-50%, -50%) translate(87px, 20px);"></span></span></a>`
 	return button
 }
 

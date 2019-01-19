@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
 	def index
 		@all_items = search_items || Item.all
+		render json: @all_items
 	end
 
 	private def search_items
