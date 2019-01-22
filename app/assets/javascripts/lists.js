@@ -1,8 +1,9 @@
 require: 'item.js'
+require: 'items.js'
 
 function List(attributes) {
 	this.id = attributes.id
-	this.name = attributes.name;
+	this.name = attributes.name
 	this.shelter = attributes.shelter
 	this.description = attributes.description
 	this.url = attributes.url
@@ -20,14 +21,16 @@ List.prototype.renderList = function () {
 
 $(document).on('turbolinks:load', function () {
 	$(".wishlist").on("click", function (e) {
-		var url = this.href  // + '/items';
+		var url = this.href
 		$.get(url).success(function (data) {
-			// console.log(data);
 			var list = new List(data)
 			var newList = list.renderList()
+			var item = new Item(data)
+			var newItem = item.renderItem()
 			var $mainContainer = $('.main_container')
 			$mainContainer.html('')
 			$mainContainer.append(newList)
+			$mainContainer.append(newItem)
 		})
 		e.preventDefault()
 	})
