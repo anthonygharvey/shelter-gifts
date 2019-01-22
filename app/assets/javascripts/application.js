@@ -15,12 +15,13 @@
 //= require turbolinks
 //= require jquery
 //= require jquery_ujs
+//= require handlebars.min
 //= require_tree .
 //= require material
-document.addEventListener('turbolinks:load', function() {
-  componentHandler.upgradeDom();
+document.addEventListener('turbolinks:load', function () {
+	componentHandler.upgradeDom();
 });
 
 function show_progress_bar(id) {
-  document.getElementById(id).style.display = "block";
+	document.getElementById(id).style.display = "block";
 }

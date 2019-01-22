@@ -2,21 +2,18 @@ require: 'item.js'
 
 $(document).on('turbolinks:load', function () {
 	$(".wishlist").on("click", function (e) {
-		$.ajax({
-			method: 'GET',
-			url: this.href + '/items'
-		}).success(function (data) {
+		var url = this.href + '/items';
+		$.get(url).success(function (data) {
 			build_list(data)
 		})
 		e.preventDefault()
 	})
 
 	$("#new_list").on("submit", function (e) {
-		$.ajax({
-			type: "POST",
-			url: this.action,
-			data: $(this).serialize()
-		}).success(function (data) {
+		var $form = $(this);
+		var url = $form.action
+		var data = $form.serialize()
+		$.post(url, data).success(function (data) {
 			build_list(data)
 		})
 		e.preventDefault()
