@@ -46,4 +46,62 @@
 	<%= link_to 'Add a new list', new_shelter_list_path(@shelter), class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" %>
 <% end %>
 
+<script id='list-template'>
+	<h1>{{shelter.name}}</h1>
+	<p>Description: {{description}}<br>
+	Wishlist link: <a href="{{url}}" target="_blank">{{url}}</a><br>
+	<a href="{{shelter.url}}">{{shelter.name}}</a>
 
+	<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+		<thead>
+			<tr>
+				<th class="mdl-data-table__cell--non-numeric">Item</th>
+				<th>Priority</th>
+				<th>Requested</th>
+				<th>Donated</th>
+				<th>Received</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each items}}
+				<tr>
+					<td class="mdl-data-table__cell--non-numeric">{{trimString this.name}}</td>
+					<td>{{capitalize this.priority}}</td>
+					<td>{{this.quantity}}</td>
+					<td>{{this.has_amount}}</td>
+					<td>{{percent_gifted this.quantity this.has_amount}}</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+	<br>
+
+	<a href="{{list.url}}" method='delete' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect' id='delete-button'>Delete List</a>
+
+	<div class="mdl-tooltip mdl-tooltip--large" for="delete-button">
+		List will be permanently deleted
+	</div>
+
+	<br>
+	<br>
+	<br>
+	<br>
+</script>
+
+<script>
+	Handlebars.registerHelper('trimString', function(string) {
+		var theString = string.substring(0,50)
+		return theString
+	})
+
+	Handlebars.registerHelper('capitalize', function(string) {
+		return string.charAt(0).toUpperCase() + string.slice(1)
+	})
+
+	Handlebars.registerHelper('percent_gifted', function(quantiy_requested, has_amount) {
+		var amount = parseInt(has_amount)
+		var quantity = parseInt(quantiy_requested)
+		var percentage = amount / quantity * 100
+		return percentage.toString().substring(0,4) + "%"
+	})
+</script>

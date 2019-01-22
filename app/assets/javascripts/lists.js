@@ -1,10 +1,33 @@
 require: 'item.js'
 
+function List(attributes) {
+	this.id = attributes.id
+	this.name = attributes.name;
+	this.shelter = attributes.shelter
+	this.description = attributes.description
+	this.url = attributes.url
+	this.items = attributes.items
+}
+
+$(function () {
+	List.templateSource = $("#list-template").html()
+	List.template = Handlebars.compile(List.templateSource)
+})
+
+List.prototype.renderList = function () {
+	return List.template(this)
+}
+
 $(document).on('turbolinks:load', function () {
 	$(".wishlist").on("click", function (e) {
-		var url = this.href + '/items';
+		var url = this.href  // + '/items';
 		$.get(url).success(function (data) {
-			build_list(data)
+			// console.log(data);
+			var list = new List(data)
+			var newList = list.renderList()
+			var $mainContainer = $('.main_container')
+			$mainContainer.html('')
+			$mainContainer.append(newList)
 		})
 		e.preventDefault()
 	})
