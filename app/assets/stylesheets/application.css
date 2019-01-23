@@ -35,7 +35,7 @@
 }
 
  .demo-card-wide.mdl-card {
-  /* width: 960px; */
+  margin: auto;
 }
 .demo-card-wide > .mdl-card__title {
   color: rgba(0,0,0, 0.87);
