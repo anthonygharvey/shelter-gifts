@@ -16,7 +16,7 @@ function build_item_cards(data) {
 			${item.name.slice(0.75)}
 			<h4>$${Number(item.price).toFixed(2)}</h4>
 			<ul class="flex-container item-stats">
-				<li class="flex-item">Priority: ${item.priority.capitalize()}</li>
+				<li class="flex-item">Priority: ${item.priority}</li>
 				<li class="flex-item">Need: ${item.quantity}</li>
 				<li class="flex-item">Has: ${item.has_amount}</li>
 			</ul>
