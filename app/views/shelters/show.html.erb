@@ -40,8 +40,6 @@
 			</tbody>
 		</table>
 
-		<br>
-
 		<%= link_to 'Add a new list', new_shelter_list_path(@shelter), class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect add-list" %>
 	<% end %>
 </div>
@@ -76,7 +74,7 @@
 	</table>
 	<br>
 
-	<a href="{{list.url}}" method='delete' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect' id='delete-button'>Delete List</a>
+	<a href="/lists/{{id}}" data-method='delete' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect' id='delete-button'>Delete List</a>
 
 	<div class="mdl-tooltip mdl-tooltip--large" for="delete-button">
 		List will be permanently deleted

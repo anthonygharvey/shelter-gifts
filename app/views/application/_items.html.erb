@@ -1,6 +1,6 @@
 <ul class="flex-container" id="items">
 	<br>
-	
+	<%= render :collection => @all_items, :partial => 'items/item', as: :item %>
 </ul>
 
 <script id='list-template'>
@@ -33,7 +33,7 @@
 	</table>
 	<br>
 
-	<a href="{{list.url}}" method='delete' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect' id='delete-button'>Delete List</a>
+	<a href="/lists/{{id}}" data-method='delete' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect' id='delete-button'>Delete List</a>
 
 	<div class="mdl-tooltip mdl-tooltip--large" for="delete-button">
 		List will be permanently deleted

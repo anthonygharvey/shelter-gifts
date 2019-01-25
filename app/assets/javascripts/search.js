@@ -9,7 +9,6 @@ $(document).on('turbolinks:load', function () {
 			url: this.parentElement.action,
 			data: $(this.parentElement).serialize(),
 		}).success(function (data) {
-			// debugger
 			var $itemContainer = $('ul#items')
 			$itemContainer.html('')
 			$itemContainer.append(build_item_cards(data))

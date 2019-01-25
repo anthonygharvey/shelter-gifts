@@ -1,7 +1,7 @@
 function build_item_cards(data) {
 	var shelter = data[0] ? data[0].shelter : data.shelter
 	var items = data[0] ? data : data.items
-	cards = `<br>`
+	cards = ``
 	cards += `<ul class="flex-container">`
 	items.forEach(item => {
 		var shelter_url = `
