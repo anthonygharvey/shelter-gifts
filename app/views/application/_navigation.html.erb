@@ -1,0 +1,19 @@
+<div class="mdl-layout__header-row">
+	<!-- Title -->
+	<span class="mdl-layout-title"><%= link_to 'Shelter Gifts', root_path %></span>
+	<!-- Add spacer, to align navigation to the right -->
+	<div class="mdl-layout-spacer"></div>
+	<!-- Navigation. We hide it in small screens. -->
+	<nav class="mdl-navigation mdl-layout--large-screen-only">
+		<% if !logged_in? %>
+			<%= link_to 'Login', login_path, {class: "mdl-navigation__link"} %>
+			<%= link_to 'Shelter Signup', register_path, {class: "mdl-navigation__link"} %>
+		<% elsif current_user.shelter != nil%>
+			<%= link_to 'My Shelter', shelter_path(current_user.shelter), {class: "mdl-navigation__link"} %>
+			<%= link_to 'Logout', logout_path, {class: "mdl-navigation__link"} %>
+		<% else %>
+			<%= link_to 'Logout', logout_path, {class: "mdl-navigation__link"} %>
+		<% end %>
+		<%= link_to 'About', '/about', {class: "mdl-navigation__link"} %>
+	</nav>
+</div>

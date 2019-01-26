@@ -35,7 +35,7 @@
 }
 
  .demo-card-wide.mdl-card {
-  /* width: 960px; */
+  margin: auto;
 }
 .demo-card-wide > .mdl-card__title {
   color: rgba(0,0,0, 0.87);
@@ -61,6 +61,18 @@ div.field_with_errors > label {
 
 .welcome-info {
   align-items: center;
+}
+
+.list {
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 35%;
+}
+
+.add-list {
+	width: 35%
 }
 
 .items, .item-stats {

@@ -1,0 +1,44 @@
+<h1><%= @list.name %></h1>
+<p>Description: <%= @list.description %><br>
+Wishlist link: <%= link_to @list.url, @list.url, target: '_blank' %><br>
+<%= link_to @list.shelter.name + ' page', shelter_path(@list.shelter) %></p>
+
+<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">Item</th>
+      <th>Priority</th>
+      <th>Requested</th>
+      <th>Donated</th>
+      <th>Received</th>
+    </tr>
+  </thead>
+  <tbody>
+		<% @list.items.each do |item| %>
+			<tr>
+				<td class="mdl-data-table__cell--non-numeric"><%= item.name %></td>
+				<td><%= item.priority.capitalize %></td>
+				<td><%= item.quantity %></td>
+				<td><%= item.has_amount %></td>
+				<td><%= (item.percent_gifted * 100).round(0) %>%</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+<br>
+
+	<%= link_to 'Delete List', list_path(@list), method: :delete, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect", id: "delete-button"%>
+
+<div class="mdl-tooltip mdl-tooltip--large" for="delete-button">
+	List will be permanently deleted
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+<ul class="flex-container">
+	<%= render :collection => @list.items, :partial => "items/item", :as => :item %>
+</ul>
+<br>

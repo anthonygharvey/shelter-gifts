@@ -16,4 +16,8 @@ class Item < ApplicationRecord
 		self.has_amount.to_f / self.quantity.to_f
 	end
 
+	def shelter
+		self.list&.shelter
+	end
+
 end

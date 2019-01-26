@@ -31,9 +31,8 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
 gem 'rufus-scheduler'
-gem "loofah", ">= 2.2.3"
-gem "sprockets", ">= 3.7.2"
-gem "rubyzip", ">= 1.2.2"
+gem 'jquery-rails'
+gem 'active_model_serializers'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

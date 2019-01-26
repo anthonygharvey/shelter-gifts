@@ -17,15 +17,15 @@ class ListsController < ApplicationController
 		@list.get_items(@list.url)
 		@list.items.each{|item| item.valid? ? next : item.delete}
 		@list.save
-		# if @list.valid? && @list.save
-		redirect_to list_path(@list)
+		@list.reload
+		render json: @list
 		else
 			render "new"
 		end
 	end
 
 	def show
-		@list = List.find(params[:id])
+		render json: @list = List.find(params[:id])
 	end
 
 	def edit

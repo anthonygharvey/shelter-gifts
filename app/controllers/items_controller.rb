@@ -1,31 +1,29 @@
 class ItemsController < ApplicationController
 	def index
-		search = [params["city"], params["state"], params["shelter_type"], params["priority"]]
+		render json: @all_items = search_items || Item.all
+	end
+
+	private def search_items
+		search = [params[:city], params[:state], params[:type], params[:priority]]
 		if search.all?{|s| s == nil}
-			@all_items = Item.all
+			Item.all
 		else
 			@shelters = Shelter.all
-				if params["city"]
-					@shelters = @shelters.by_city(params["city"])
-				end
-				if params["state"]
-					@shelters = @shelters.by_state(params["state"])
-				end
-				if params["shelter_type"]
-					@shelters = @shelters.by_type(params["shelter_type"])
-				end
-			@all_items = @shelters.collect do |s|
-				if (params["priority"] != "" && params["priority"] != nil)
-					s.items.select do |i|
-						i.priority == params["priority"].downcase
-					end
+				.by_city(params[:city])
+				.by_state(params[:state])
+				.by_type(params[:shelter_type])
+				
+			@shelters.collect do |s|
+				if (params[:priority] != "" && params[:priority] != nil)
+					s.items.select { |i| i.priority == params[:priority].downcase }
 				else
 					s.items
 				end
 			end.flatten
 		end
-		
-	
 	end
 
+	private def search_params
+		params.permit(:city, :state, :shelter_type, :priority)
+	end
 end
