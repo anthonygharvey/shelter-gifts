@@ -19,8 +19,6 @@ class ListsController < ApplicationController
 		@list.save
 		@list.reload
 		render json: @list
-		# if @list.valid? && @list.save
-		# redirect_to list_path(@list)
 		else
 			render "new"
 		end
