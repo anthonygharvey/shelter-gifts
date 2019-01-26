@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.3.3'
+ruby '2.5.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
@@ -24,8 +24,14 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
+gem "activestorage", ">= 5.2.1.1"
+gem "rack", ">= 2.0.6"
 gem 'bcrypt', '~> 3.1.7'
-gem 'nokogiri', '~> 1.6', '>= 1.6.8'
+gem "nokogiri", ">= 1.8.5"
+gem "loofah", ">= 2.2.3"
+gem "rubyzip", ">= 1.2.2"
+gem "sprockets", ">= 3.7.2"
+gem "activejob", ">= 5.2.1.1"
 gem 'material_design_lite-sass'
 gem 'dotenv-rails'
 gem 'rufus-scheduler'
