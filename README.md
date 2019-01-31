@@ -15,7 +15,7 @@ Visitors can browse the list of items needed on the homepage, where each item is
 App link: <a href="https://shelter-gifts.herokuapp.com/" target="_blank">Shelter Gifts</a><br><br>
 Shelter Gifts is currently in **demonstration mode** and currently has only one verified shelter, the <a href="https://www.mensshelterofcharlotte.org/" target="_blank">Men's Shelter of Charlotte</a>.  
 
-In demo mode, you can register, create a shelter and save an Amazon Wishlist URL and the items will be added to the collection and displayed on the homepage.  The open registration is intended to demonstrate the functionality of the app; however, the app **resets every 5 minutes** to only show verified shelters and their items (the Men's Shelter of Charlotte currently).
+In demo mode, you can register, create a shelter and save an Amazon Wishlist URL and the items will be added to the collection and displayed on the homepage.  The open registration is intended to demonstrate the functionality of the app; however, the app **resets every 30 minutes** to only show verified shelters and their items (the Men's Shelter of Charlotte currently).
 
 ## Local Installation
 To install and run the app on your local machine:
